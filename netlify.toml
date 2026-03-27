@@ -1,7 +1,6 @@
 [build]
-  command = "npx tailwindcss -i ./input.css -o ./bin/style.css"
-  publish = "bin"
-  base = "src"
+  command = "npx tailwindcss -i ./src/input.css -o ./src/style.css"
+  publish = "src"
   
 [build.environment]
   NODE_VERSION = "18"
