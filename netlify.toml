@@ -1,0 +1,12 @@
+[build]
+  command = "npx tailwindcss -i ./src/input.css -o ./bin/style.css"
+  publish = "bin"
+  
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "8"
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
