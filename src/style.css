@@ -1,0 +1,44 @@
+/* Estilo para simular el trazo de acuarela del diseño */
+.art-stroke {
+    background: radial-gradient(circle at 70% 50%, rgba(34, 211, 238, 0.2) 0%, transparent 60%);
+    filter: blur(80px);
+    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 0.6;
+}
+
+/* Tipografía extra bold para el logo */
+h1, .font-black {
+    letter-spacing: -0.05em;
+}
+
+/* Transición suave para todo */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Efecto de enfoque en los inputs */
+input:focus + label, textarea:focus + label {
+    color: #22D3EE;
+}
+
+/* Animación sutil para los fondos decorativos */
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+.animate-pulse {
+    animation: pulse-slow 8s infinite ease-in-out;
+}
+
+/* Scroll suave y configuración de eventos para AOS */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Evitamos que los elementos interactúen antes de que AOS los anime */
+[data-aos] {
+    pointer-events: none;
+}
+.aos-animate {
+    pointer-events: auto;
+}

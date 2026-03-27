@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Pixel - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <h1 data-aos="fade-up" data-aos-duration="1000" class="text-6xl font-black uppercase">Black Pixel</h1>
+<!-- Contenido de la página irá aquí -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script> AOS.init(); </script>
+<div data-aos="fade-up" data-aos-delay="100" class="border-2 rounded-lg p-4 bg-white text-center">Estrategia</div>
+<div data-aos="fade-up" data-aos-delay="300" class="border-2 rounded-lg p-4 bg-white text-center">Diseño</div>
+<div data-aos="fade-up" data-aos-delay="500" class="border-2 rounded-lg p-4 bg-white text-center">Campañas</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  // Sustituye estos datos con los que aparecen en Settings > API de tu panel de Supabase
+  const SUPABASE_URL = 'TU_URL_DE_SUPABASE';
+  const SUPABASE_ANON_KEY = 'TU_KEY_ANONIMA';
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
+</body>
+</html>
