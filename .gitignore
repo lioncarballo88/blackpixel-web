@@ -7,8 +7,6 @@
 *.ear
 *.zip
 *.tar.gz
-/bin/
-
 # IDE files
 .vscode/
 .idea/
