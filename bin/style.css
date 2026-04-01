@@ -2,21 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilo para simular el trazo de acuarela del diseño */
-.art-stroke {
-    background: radial-gradient(circle at 70% 50%, rgba(34, 211, 238, 0.2) 0%, transparent 60%);
-    filter: blur(80px);
-    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
-    opacity: 0.6;
-}
-
 /* Tipografía extra bold para el logo */
 h1, .font-black {
     letter-spacing: -0.05em;
 }
 
-/* Transición suave para todo */
-* {
+/* Transición suave para elementos interactivos */
+button, a, input, textarea {
     transition: all 0.3s ease;
 }
 
