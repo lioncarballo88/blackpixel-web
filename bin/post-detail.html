@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="post-title">Cargando Post...</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fallback local si el CDN falla -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" crossorigin="anonymous">
+    <!-- CSS de respaldo crítico -->
+    <link rel="stylesheet" href="tailwind-fallback.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- AOS Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+</head>
+<body class="bg-zinc-900 text-gray-100">
+    <!-- Navbar / Menú de navegación -->
+    <nav class="fixed top-0 left-0 w-full bg-zinc-900/80 backdrop-blur-md z-50 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <div class="w-6 h-6 bg-black mr-3 shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:bg-[#22D3EE] transition-colors duration-500"></div>
+                <span class="font-black text-3xl uppercase tracking-tighter text-white group-hover:text-cyan-500 transition-colors">
+                    Black Pixel.
+                </span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="index.html#portafolio" class="hover:text-white transition-colors">Proyectos</a>
+                <a href="index.html#servicios" class="hover:text-white transition-colors">Servicios</a>
+                <a href="blog.html" class="text-[#22D3EE] hover:text-white transition-colors">Blog</a>
+                <a href="index.html#contacto" class="hover:text-white transition-colors">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20">
+        <div class="max-w-4xl mx-auto px-10">
+            <article id="blog-post-content">
+                <p class="text-center text-gray-400">Cargando contenido del post...</p>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer (se copiará de index.html para consistencia) -->
+    <footer class="px-10 py-12 border-t border-zinc-900 bg-zinc-950 text-white">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500">
+            
+            <div class="mb-6 md:mb-0">
+                <p>© 2026 Black Pixel. <span class="text-cyan-400 mx-2">|</span> Todos los derechos reservados.</p>
+            </div>
+
+            <div class="flex space-x-8">
+                <button onclick="openModal('modal-privacidad')" class="hover:text-cyan-400 transition">Aviso de Privacidad</button>
+                <button onclick="openModal('modal-terminos')" class="hover:text-cyan-400 transition">Términos y Condiciones</button>
+                <button onclick="openModal('modal-licencias')" class="hover:text-cyan-400 transition">Licencias de Activos</button>
+            </div>
+
+            <div class="flex space-x-6 mt-6 md:mt-0">
+                <a href="#" class="text-white hover:text-cyan-400 transition">LinkedIn</a>
+                <a href="https://wa.me/9842044965" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales (se copiarán de index.html para que funcionen aquí también) -->
+    <!-- Modales de Servicios -->
+    <div id="modal-plan" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl transition-opacity duration-300">
+        <div class="bg-[#111] border border-gray-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-plan')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <span class="text-cyan-400 font-black text-xs uppercase tracking-[0.3em]">Servicio 01</span>
+            <h2 class="text-3xl font-black text-white uppercase mt-2 mb-6">Planificación y Crecimiento</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+                No caminamos a ciegas. Analizamos tu negocio y a tu competencia para crear un plan de trabajo real. Ya sea que busques dominar el mercado local o expandir tus servicios al extranjero, diseñamos el camino para que tu <strong>inversión se convierta en clientes reales</strong>.
+            </p>
+            <ul class="text-gray-400 text-sm space-y-2 mb-8 uppercase tracking-tighter">
+                <li><span class="text-cyan-400 mr-2">/</span> Análisis de tu negocio y clientes.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Plan de ventas paso a paso.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Asesoría personalizada para crecer.</li>
+            </ul>
+            <a href="index.html#contacto" onclick="closeModal('modal-plan')" class="bg-cyan-400 text-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-white transition inline-block">Hablar con un asesor</a>
+        </div>
+    </div>\r\n\r\n    <div id="modal-diseno" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl transition-opacity duration-300">
+        <div class="bg-[#111] border border-gray-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-diseno')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <span class="text-cyan-400 font-black text-xs uppercase tracking-[0.3em]">Servicio 02</span>
+            <h2 class="text-3xl font-black text-white uppercase mt-2 mb-6">Diseño Profesional y Web</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+                La primera impresión es la que cuenta. Creamos logotipos, páginas web y aplicaciones que hacen que tu empresa se vea <strong>profesional y moderna</strong> en cualquier parte del mundo. Un diseño limpio genera confianza inmediata en tus clientes.
+            </p>
+            <ul class="text-gray-400 text-sm space-y-2 mb-8 uppercase tracking-tighter">
+                <li><span class="text-cyan-400 mr-2">/</span> Logos y marcas profesionales.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Páginas web rápidas y modernas.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Diseño para redes sociales.</li>
+            </ul>
+            <a href="index.html#contacto" onclick="closeModal('modal-diseno')" class="bg-cyan-400 text-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-white transition inline-block">Mejorar mi imagen</a>
+        </div>
+    </div>\r\n\r\n    <div id="modal-ads" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl transition-opacity duration-300">
+        <div class="bg-[#111] border border-gray-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-ads')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <span class="text-cyan-400 font-black text-xs uppercase tracking-[0.3em]">Servicio 03</span>
+            <h2 class="text-3xl font-black text-white uppercase mt-2 mb-6">Publicidad en Redes y Google</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+                Ponemos tu negocio frente a las personas que realmente quieren comprarte. Gestionamos tus anuncios para que no gastes dinero en balde. Hacemos que tu marca se escuche fuerte y que <strong>tus ventas no se detengan</strong>.
+            </p>
+            <ul class="text-gray-400 text-sm space-y-2 mb-8 uppercase tracking-tighter">
+                <li><span class="text-cyan-400 mr-2">/</span> Anuncios que traen prospectos.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Manejo profesional de redes sociales.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Reportes de resultados claros.</li>
+            </ul>
+            <a href="index.html#contacto" onclick="closeModal('modal-ads')" class="bg-cyan-400 text-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-white transition inline-block">Empezar a vender</a>
+        </div>
+    </div>\r\n\r\n    <!-- Modales Legales -->\r\n    <div id="modal-privacidad" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[80vh] overflow-y-auto relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-privacidad')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Aviso de Privacidad</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p>En <strong>Black Pixel.</strong>, la protección de tus datos es nuestra prioridad. La información recopilada a través de nuestros formularios se utilizará exclusivamente para:</p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                    <li>Responder a tus solicitudes de cotización.</li>
+                    <li>Enviar información sobre servicios de marketing digital.</li>
+                    <li>Mejorar tu experiencia en nuestro sitio web.</li>
+                </ul>
+                <p>No compartimos tus datos con terceros sin tu consentimiento explícito. Al usar nuestro formulario de contacto, aceptas estos términos.</p>
+            </div>
+        </div>
+    </div>\r\n\r\n    <div id="modal-licencias" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-licencias')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Licencias y Recursos</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p><strong>Diseño & Código:</strong> Propiedad intelectual de Black Pixel. © 2026.</p>
+                <p><strong>Imágenes:</strong> Utilizadas bajo licencia de Unsplash / Pexels con fines demostrativos de portafolio.</p>
+                <p><strong>Tecnología:</strong> Tailwind CSS, AOS Library, Google Fonts (Licencia Open Font).</p>
+            </div>
+        </div>
+    </div>\r\n\r\n    <div id=\"modal-terminos\" class=\"fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300\">\r\n        <div class=\"bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[80vh] overflow-y-auto relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300\">\r\n            <button onclick=\"closeModal('modal-terminos')\" class=\"absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light\">✕</button>\r\n            <h2 class=\"text-2xl font-black text-white uppercase mb-6 text-cyan-400\">Términos y Condiciones</h2>\r\n            <div class=\"text-gray-400 text-sm space-y-4 leading-relaxed\">\r\n                <p>Bienvenido a Black Pixel. Al acceder y utilizar nuestro sitio web y servicios, aceptas los siguientes términos y condiciones. Por favor, léelos detenidamente.</p>\r\n                \r\n                <h3>1. Uso del Sitio Web</h3>\r\n                <p>El contenido de este sitio web es solo para información general y uso personal. Nos reservamos el derecho de modificar o retirar cualquier contenido sin previo aviso.</p>\r\n\r\n                <h3>2. Propiedad Intelectual</h3>\r\n                <p>Todo el contenido (diseños, textos, gráficos, logotipos) es propiedad de Black Pixel o de sus respectivos dueños, y está protegido por las leyes de propiedad intelectual. No se permite la reproducción sin autorización.</p>\r\n\r\n                <h3>3. Servicios Ofrecidos</h3>\r\n                <p>Los detalles de nuestros servicios, incluyendo diseño web, desarrollo de aplicaciones y marketing digital, se describen en este sitio. Cualquier contratación estará sujeta a un acuerdo formal y personalizado.</p>\r\n\r\n                <h3>4. Privacidad de Datos</h3>\r\n                <p>La recopilación y uso de tus datos personales se rige por nuestro Aviso de Privacidad, disponible en este mismo sitio web. Al usar nuestros formularios, aceptas nuestra política de privacidad.</p>\r\n\r\n                <h3>5. Limitación de Responsabilidad</h3>\r\n                <p>Black Pixel no se hace responsable por daños o pérdidas que resulten del uso o la incapacidad de usar nuestro sitio web o servicios. Hacemos nuestro mejor esfuerzo por mantener la información precisa, pero no garantizamos su exactitud total.</p>\r\n\r\n                <h3>6. Enlaces a Terceros</h3>\r\n                <p>Nuestro sitio puede contener enlaces a sitios web de terceros. No somos responsables por el contenido o las prácticas de privacidad de estos sitios.</p>\r\n\r\n                <h3>7. Modificaciones a los Términos</h3>\r\n                <p>Nos reservamos el derecho de actualizar estos Términos y Condiciones en cualquier momento. La versión más reciente será siempre la que esté publicada en esta página.</p>\r\n\r\n                <h3>8. Contacto</h3>\r\n                <p>Para cualquier pregunta sobre estos términos, por favor contáctanos a través de nuestro formulario o al WhatsApp 984 204 4965.</p>\r\n\r\n                <p class=\"mt-8 text-xs text-gray-500\">Última actualización: 27 de Marzo de 2026</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <!-- Scripts Lógicos y Librerías -->\r\n    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>\r\n    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\r\n    <script src="main.js"></script>\r\n</body>
+</html>

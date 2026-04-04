@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Black Pixel</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fallback local si el CDN falla -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" crossorigin="anonymous">
+    <!-- CSS de respaldo crítico -->
+    <link rel="stylesheet" href="tailwind-fallback.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- AOS Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+</head>
+<body class="bg-zinc-900 text-gray-100">
+    <!-- Navbar / Menú de navegación (se copiará de index.html para consistencia) -->
+    <nav class="fixed top-0 left-0 w-full bg-zinc-900/80 backdrop-blur-md z-50 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-10 py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <div class="w-6 h-6 bg-black mr-3 shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:bg-[#22D3EE] transition-colors duration-500"></div>
+                <span class="font-black text-3xl uppercase tracking-tighter text-white group-hover:text-cyan-500 transition-colors">
+                    Black Pixel.
+                </span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="index.html#portafolio" class="hover:text-white transition-colors">Proyectos</a>
+                <a href="index.html#servicios" class="hover:text-white transition-colors">Servicios</a>
+                <a href="blog.html" class="text-[#22D3EE] hover:text-white transition-colors">Blog</a>
+                <a href="index.html#contacto" class="hover:text-white transition-colors">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-10">
+            <h1 class="text-5xl md:text-6xl font-black uppercase mb-12 text-center text-white" data-aos="fade-down">Nuestro <span class="text-[#22D3EE]">Blog</span></h1>
+            
+            <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Post 1 -->
+                <a href="post-detail.html?slug=estrategia-digital-2026" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Estrategia Digital 2026" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Estrategia Digital para Emprendedores en 2026</h3>
+                        <p class="text-gray-400 text-sm mb-4">Descubre las tendencias que marcarán el futuro del marketing digital y cómo preparar tu negocio para el éxito.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 2 -->
+                <a href="post-detail.html?slug=diseño-web-rapido" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=800&q=80" alt="Diseño Web Rápido" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Por qué tu Página Web Debe Cargar en Menos de 3 Segundos</h3>
+                        <p class="text-gray-400 text-sm mb-4">La velocidad de carga impacta directamente en tus conversiones. Aprende a optimizar tu sitio web.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 3 -->
+                <a href="post-detail.html?slug=branding-emprendedores" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Branding para Emprendedores" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Branding que Vende: Cómo Crear una Marca que Conecte</h3>
+                        <p class="text-gray-400 text-sm mb-4">Más allá del logo: construye una identidad que genere confianza y lealtad en tus clientes.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 4 -->
+                <a href="post-detail.html?slug=redes-sociales-veracruz" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=80" alt="Redes Sociales Veracruz" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Marketing en Redes Sociales para Negocios Locales</h3>
+                        <p class="text-gray-400 text-sm mb-4">Estrategias específicas para emprendedores de Veracruz que quieren dominar Instagram y Facebook.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 5 -->
+                <a href="post-detail.html?slug=apps-moviles-emprendimiento" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="Apps Móviles para Emprendimiento" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Necesita tu Negocio una App Móvil?</h3>
+                        <p class="text-gray-400 text-sm mb-4">Cuándo invertir en desarrollo móvil y cómo elegir la tecnología correcta para tu emprendimiento.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 6 -->
+                <a href="post-detail.html?slug=google-ads-emprendedores" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Google Ads para Emprendedores" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Google Ads: De Principiante a Experto en 30 Días</h3>
+                        <p class="text-gray-400 text-sm mb-4">Guía completa para crear campañas efectivas que traigan clientes reales a tu negocio local.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 7 -->
+                <a href="post-detail.html?slug=seo-local-emprendedores" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?auto=format&fit=crop&w=800&q=80" alt="SEO Local para Emprendedores" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">SEO Local: Cómo Aparecer Primero en Google Maps</h3>
+                        <p class="text-gray-400 text-sm mb-4">Domina las búsquedas locales y atrae clientes de tu zona. Estrategias probadas para negocios de Veracruz.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 8 -->
+                <a href="post-detail.html?slug=email-marketing-efectivo" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=800&q=80" alt="Email Marketing Efectivo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Email Marketing que Convierte: Construye tu Lista de Clientes</h3>
+                        <p class="text-gray-400 text-sm mb-4">Aprende a crear newsletters que no van al spam y generan ventas recurrentes para tu emprendimiento.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 9 -->
+                <a href="post-detail.html?slug=analisis-datos-negocio" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Análisis de Datos para Negocio" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Análisis de Datos: Toma Decisiones Inteligentes para tu Negocio</h3>
+                        <p class="text-gray-400 text-sm mb-4">Cómo usar Google Analytics y otras herramientas para entender a tus clientes y optimizar tus ventas.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 10 -->
+                <a href="post-detail.html?slug=ecommerce-veracruz" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="E-commerce en Veracruz" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Tienda Online para tu Negocio: Vende 24/7 en Veracruz</h3>
+                        <p class="text-gray-400 text-sm mb-4">Plataformas, costos y estrategias para crear una tienda virtual que funcione en el mercado local.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 11 -->
+                <a href="post-detail.html?slug=contenido-visual-redes" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=80" alt="Contenido Visual para Redes" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Contenido Visual que Engancha: Diseña Posts que Vendan</h3>
+                        <p class="text-gray-400 text-sm mb-4">Tips de diseño gráfico para crear contenido atractivo en Instagram, Facebook y TikTok.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Post 12 -->
+                <a href="post-detail.html?slug=automatizacion-marketing" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800&q=80" alt="Automatización de Marketing" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Automatización de Marketing: Trabaja Menos, Vende Más</h3>
+                        <p class="text-gray-400 text-sm mb-4">Herramientas y estrategias para automatizar tus ventas, emails y redes sociales sin perder el toque personal.</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
+                </a>
+        </div>
+    </main>
+
+    <!-- Footer (se copiará de index.html para consistencia) -->
+    <footer class="px-10 py-12 border-t border-zinc-900 bg-zinc-950 text-white">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500">
+            
+            <div class="mb-6 md:mb-0">
+                <p>© 2026 Black Pixel. <span class="text-cyan-400 mx-2">|</span> Todos los derechos reservados.</p>
+            </div>
+
+            <div class="flex space-x-8">
+                <button onclick="openModal('modal-privacidad')" class="hover:text-cyan-400 transition">Aviso de Privacidad</button>
+                <button onclick="openModal('modal-terminos')" class="hover:text-cyan-400 transition">Términos y Condiciones</button>
+                <button onclick="openModal('modal-licencias')" class="hover:text-cyan-400 transition">Licencias de Activos</button>
+            </div>
+
+            <div class="flex space-x-6 mt-6 md:mt-0">
+                <a href="#" class="text-white hover:text-cyan-400 transition">LinkedIn</a>
+                <a href="https://wa.me/9842044965" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales (se copiarán de index.html para que funcionen aquí también) -->
+    <!-- Modales de Servicios -->
+    <div id="modal-plan" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl transition-opacity duration-300">
+        <div class="bg-[#111] border border-gray-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-plan')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <span class="text-cyan-400 font-black text-xs uppercase tracking-[0.3em]">Servicio 01</span>
+            <h2 class="text-3xl font-black text-white uppercase mt-2 mb-6">Planificación y Crecimiento</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+                No caminamos a ciegas. Analizamos tu negocio y a tu competencia para crear un plan de trabajo real. Ya sea que busques dominar el mercado local o expandir tus servicios al extranjero, diseñamos el camino para que tu <strong>inversión se convierta en clientes reales</strong>.
+            </p>
+            <ul class="text-gray-400 text-sm space-y-2 mb-8 uppercase tracking-tighter">
+                <li><span class="text-cyan-400 mr-2">/</span> Análisis de tu negocio y clientes.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Plan de ventas paso a paso.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Asesoría personalizada para crecer.</li>
+            </ul>
+            <a href="index.html#contacto" onclick="closeModal('modal-plan')" class="bg-cyan-400 text-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-white transition inline-block">Hablar con un asesor</a>
+        </div>
+    </div>\r\n\r\n    <div id="modal-diseno" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl transition-opacity duration-300">
+        <div class="bg-[#111] border border-gray-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-diseno')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <span class="text-cyan-400 font-black text-xs uppercase tracking-[0.3em]">Servicio 02</span>
+            <h2 class="text-3xl font-black text-white uppercase mt-2 mb-6">Diseño Profesional y Web</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+                La primera impresión es la que cuenta. Creamos logotipos, páginas web y aplicaciones que hacen que tu empresa se vea <strong>profesional y moderna</strong> en cualquier parte del mundo. Un diseño limpio genera confianza inmediata en tus clientes.
+            </p>
+            <ul class="text-gray-400 text-sm space-y-2 mb-8 uppercase tracking-tighter">
+                <li><span class="text-cyan-400 mr-2">/</span> Logos y marcas profesionales.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Páginas web rápidas y modernas.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Diseño para redes sociales.</li>
+            </ul>
+            <a href="index.html#contacto" onclick="closeModal('modal-diseno')" class="bg-cyan-400 text-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-white transition inline-block">Mejorar mi imagen</a>
+        </div>
+    </div>\r\n\r\n    <div id="modal-ads" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl transition-opacity duration-300">
+        <div class="bg-[#111] border border-gray-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-ads')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <span class="text-cyan-400 font-black text-xs uppercase tracking-[0.3em]">Servicio 03</span>
+            <h2 class="text-3xl font-black text-white uppercase mt-2 mb-6">Publicidad en Redes y Google</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">
+                Ponemos tu negocio frente a las personas que realmente quieren comprarte. Gestionamos tus anuncios para que no gastes dinero en balde. Hacemos que tu marca se escuche fuerte y que <strong>tus ventas no se detengan</strong>.
+            </p>
+            <ul class="text-gray-400 text-sm space-y-2 mb-8 uppercase tracking-tighter">
+                <li><span class="text-cyan-400 mr-2">/</span> Anuncios que traen prospectos.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Manejo profesional de redes sociales.</li>
+                <li><span class="text-cyan-400 mr-2">/</span> Reportes de resultados claros.</li>
+            </ul>
+            <a href="index.html#contacto" onclick="closeModal('modal-ads')" class="bg-cyan-400 text-black px-8 py-3 font-black uppercase text-xs tracking-widest hover:bg-white transition inline-block">Empezar a vender</a>
+        </div>
+    </div>\r\n\r\n    <!-- Modales Legales -->\r\n    <div id="modal-privacidad" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[80vh] overflow-y-auto relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-privacidad')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Aviso de Privacidad</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p>En <strong>Black Pixel.</strong>, la protección de tus datos es nuestra prioridad. La información recopilada a través de nuestros formularios se utilizará exclusivamente para:</p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                    <li>Responder a tus solicitudes de cotización.</li>
+                    <li>Enviar información sobre servicios de marketing digital.</li>
+                    <li>Mejorar tu experiencia en nuestro sitio web.</li>
+                </ul>
+                <p>No compartimos tus datos con terceros sin tu consentimiento explícito. Al usar nuestro formulario de contacto, aceptas estos términos.</p>
+            </div>
+        </div>
+    </div>\r\n\r\n    <div id="modal-licencias" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-licencias')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Licencias y Recursos</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p><strong>Diseño & Código:</strong> Propiedad intelectual de Black Pixel. © 2026.</p>
+                <p><strong>Imágenes:</strong> Utilizadas bajo licencia de Unsplash / Pexels con fines demostrativos de portafolio.</p>
+                <p><strong>Tecnología:</strong> Tailwind CSS, AOS Library, Google Fonts (Licencia Open Font).</p>
+            </div>
+        </div>
+    </div>\r\n\r\n    <div id="modal-terminos" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[80vh] overflow-y-auto relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-terminos')" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Términos y Condiciones</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p>Bienvenido a Black Pixel. Al acceder y utilizar nuestro sitio web y servicios, aceptas los siguientes términos y condiciones. Por favor, léelos detenidamente.</p>
+                
+                <h3>1. Uso del Sitio Web</h3>
+                <p>El contenido de este sitio web es solo para información general y uso personal. Nos reservamos el derecho de modificar o retirar cualquier contenido sin previo aviso.</p>
+
+                <h3>2. Propiedad Intelectual</h3>
+                <p>Todo el contenido (diseños, textos, gráficos, logotipos) es propiedad de Black Pixel o de sus respectivos dueños, y está protegido por las leyes de propiedad intelectual. No se permite la reproducción sin autorización.</p>
+
+                <h3>3. Servicios Ofrecidos</h3>
+                <p>Los detalles de nuestros servicios, incluyendo diseño web, desarrollo de aplicaciones y marketing digital, se describen en este sitio. Cualquier contratación estará sujeta a un acuerdo formal y personalizado.</p>
+
+                <h3>4. Privacidad de Datos</h3>
+                <p>La recopilación y uso de tus datos personales se rige por nuestro Aviso de Privacidad, disponible en este mismo sitio web. Al usar nuestros formularios, aceptas nuestra política de privacidad.</p>
+
+                <h3>5. Limitación de Responsabilidad</h3>
+                <p>Black Pixel no se hace responsable por daños o pérdidas que resulten del uso o la incapacidad de usar nuestro sitio web o servicios. Hacemos nuestro mejor esfuerzo por mantener la información precisa, pero no garantizamos su exactitud total.</p>
+
+                <h3>6. Enlaces a Terceros</h3>
+                <p>Nuestro sitio puede contener enlaces a sitios web de terceros. No somos responsables por el contenido o las prácticas de privacidad de estos sitios.</p>
+
+                <h3>7. Modificaciones a los Términos</h3>
+                <p>Nos reservamos el derecho de actualizar estos Términos y Condiciones en cualquier momento. La versión más reciente será siempre la que esté publicada en esta página.</p>
+
+                <h3>8. Contacto</h3>
+                <p>Para cualquier pregunta sobre estos términos, por favor contáctanos a través de nuestro formulario o al WhatsApp 984 204 4965.</p>
+
+                <p class="mt-8 text-xs text-gray-500">Última actualización: 27 de Marzo de 2026</p>
+            </div>
+        </div>
+    </div>\r\n\r\n    <!-- Scripts Lógicos y Librerías -->\r\n    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>\r\n    <script>
+        // Inicializar AOS (Animate On Scroll)
+        try {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                    mirror: false,
+                });
+            }
+        } catch (error) {
+            console.warn('Error inicializando AOS:', error);
+        }
+
+        // Funciones para modales
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+                modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+            modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('fixed') && !event.target.classList.contains('hidden')) {
+                closeModal(event.target.id);
+            }
+        }
+    </script>\r\n</body>
+</html>

@@ -25,3 +25,7 @@ thumbs.db
 !.dev.vars.example
 .env*
 !.env.example
+
+# Vercel and local env files
+.vercel
+.env*.local

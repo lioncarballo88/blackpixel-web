@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos críticos de respaldo por si Tailwind no carga */
+.bg-zinc-900 { background-color: #18181b; }
+.text-white { color: #ffffff; }
+.text-gray-100 { color: #f3f4f6; }
+.text-gray-400 { color: #9ca3af; }
+.text-cyan-400 { color: #22d3ee; }
+.text-cyan-500 { color: #06b6d4; }
+.font-black { font-weight: 900; }
+.uppercase { text-transform: uppercase; }
+.text-center { text-align: center; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.min-h-screen { min-height: 100vh; }
+.px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.text-6xl { font-size: 3.75rem; line-height: 1; }
+.text-8xl { font-size: 6rem; line-height: 1; }
+.font-light { font-weight: 300; }
+.max-w-3xl { max-width: 48rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mb-12 { margin-bottom: 3rem; }
+.bg-cyan-400 { background-color: #22d3ee; }
+.text-black { color: #000000; }
+.px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
+.py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+.text-11px { font-size: 11px; }
+.tracking-0\.2em { letter-spacing: 0.2em; }
+.hover\:bg-white:hover { background-color: #ffffff; }
+.transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.duration-500 { transition-duration: 500ms; }
+.shadow-\[0_0_30px_rgba\(34\,211\,238\,0\.3\)\] { box-shadow: 0 0 30px rgba(34, 211, 238, 0.3); }
+.absolute { position: absolute; }
+.bottom-10 { bottom: 2.5rem; }
+.left-1\/2 { left: 50%; }
+.-translate-x-1\/2 { transform: translateX(-50%); }
+.animate-bounce { animation: bounce 1s infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
