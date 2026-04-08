@@ -41,13 +41,11 @@ function closeModal(id) {
 }
 
 // Cerrar al hacer clic fuera del contenido
-window.onclick = function(event) {
-    // Chequeamos si el elemento clicado es directamente el contenedor de fondo (que tiene 'fixed')
+window.addEventListener('click', function(event) {
     if (event.target.classList.contains('fixed') && !event.target.classList.contains('hidden')) {
-        // Obtenemos el ID del modal clicado y usamos la función de cierre que ya tiene animaciones
         closeModal(event.target.id);
     }
-}
+});
 
 // ==========================================
 // Configuración de Supabase y Formulario
@@ -213,20 +211,24 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
         function renderBlogPosts(posts) {
-            blogPostsContainer.innerHTML = ''; // Limpiar el contenedor
+            const fragment = document.createDocumentFragment();
             posts.forEach(post => {
-                const postElement = `
-                    <a href="post-detail.html?slug=${post.slug}" class="block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300" data-aos="fade-up">
-                        <img src="${post.image_url || 'assets/images/placeholder-blog.jpg'}" alt="${post.title}" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-white mb-2">${post.title}</h3>
-                            <p class="text-gray-400 text-sm mb-4">${post.excerpt || ''}</p>
-                            <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
-                        </div>
-                    </a>
+                const a = document.createElement('a');
+                a.href = `post-detail.html?slug=${post.slug}`;
+                a.className = 'block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300';
+                a.setAttribute('data-aos', 'fade-up');
+                a.innerHTML = `
+                    <img src="${post.image_url || 'assets/images/placeholder-blog.jpg'}" alt="${post.title}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">${post.title}</h3>
+                        <p class="text-gray-400 text-sm mb-4">${post.excerpt || ''}</p>
+                        <span class="text-cyan-400 text-xs uppercase font-semibold">Leer más &rarr;</span>
+                    </div>
                 `;
-                blogPostsContainer.innerHTML += postElement;
+                fragment.appendChild(a);
             });
+            blogPostsContainer.innerHTML = '';
+            blogPostsContainer.appendChild(fragment);
         }
 
         // Cargar las 12 entradas directamente
@@ -912,6 +914,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <p><strong>¿Quieres que tu negocio crezca automáticamente?</strong> Diseñamos e implementamos sistemas de automatización personalizados para tu negocio.</p>
                     `
                 }
+            };
 
             const post = postsData[slug];
 

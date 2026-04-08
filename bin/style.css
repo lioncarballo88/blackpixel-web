@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Tipografía extra bold para el logo */
 h1, .font-black {
     letter-spacing: -0.05em;
@@ -31,10 +27,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Evitamos que los elementos interactúen antes de que AOS los anime */
-[data-aos] {
-    pointer-events: none;
-}
+/* Elementos con AOS son interactivos siempre */
 .aos-animate {
     pointer-events: auto;
 }
