@@ -78,7 +78,7 @@ Antes del despliegue final, actualizar:
 
 ## Contacto
 
-- Email: hola@blackpixel.mx
+- Email: lioncarballo@gmail.com
 - Ubicación: Tres Valles, Veracruz
 
 ## Licencia

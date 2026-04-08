@@ -1,4 +1,31 @@
-// Inicializar AOS (Animate On Scroll) con manejo de errores
+// Menú hamburguesa móvil
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+}
+function closeMobileMenu() {
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+}
+
+// Dots para carruseles móviles
+function initCarouselDots(carouselId, dotsContainerId) {
+    const carousel = document.getElementById(carouselId);
+    const dotsContainer = document.getElementById(dotsContainerId);
+    if (!carousel || !dotsContainer) return;
+    const dots = dotsContainer.querySelectorAll('span');
+    carousel.addEventListener('scroll', () => {
+        const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+        dots.forEach((d, i) => {
+            d.classList.toggle('bg-cyan-400', i === index);
+            d.classList.toggle('bg-zinc-600', i !== index);
+        });
+    }, { passive: true });
+}
+initCarouselDots('metodoCarousel', 'metodoDots');
+
 try {
     if (typeof AOS !== 'undefined') {
         AOS.init({
