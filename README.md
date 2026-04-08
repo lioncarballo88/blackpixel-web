@@ -4,45 +4,51 @@ Página web estática para la agencia digital Black Pixel, especializada en dise
 
 ## Descripción
 
-Este proyecto contiene el sitio web de Black Pixel, una agencia digital ubicada en Tres Valles, Veracruz. El sitio incluye:
+Sitio web de Black Pixel, agencia digital ubicada en Tres Valles, Veracruz. Incluye:
 
-- Página de inicio con hero section y portafolio
-- Sección de servicios (Planificación, Diseño Web, Publicidad)
+- Página de inicio con hero section y portafolio de proyectos
+- Sección de servicios con modales informativos (Planificación, Diseño Web, Publicidad)
+- Sección "Acerca del creador" con perfil del fundador
+- El Método Black Pixel (4 pasos)
 - Testimonios de clientes
 - Formulario de contacto integrado con Supabase
-- Modales informativos
+- Blog con 12 artículos y páginas de detalle
+- Diseño completamente responsivo con carruseles en móvil
+- Menú hamburguesa en móvil
 
 ## Tecnologías Utilizadas
 
 - **HTML5** - Estructura del sitio
-- **Tailwind CSS** - Framework de estilos
-- **JavaScript** - Interactividad y animaciones
-- **AOS (Animate On Scroll)** - Librería de animaciones
-- **Supabase** - Base de datos para formularios de contacto
+- **Tailwind CSS** (CDN) - Framework de estilos
+- **JavaScript** - Interactividad, modales, carruseles y formulario
+- **AOS (Animate On Scroll)** - Animaciones al hacer scroll
+- **Supabase** - Base de datos para el formulario de contacto
 - **Vercel** - Plataforma de despliegue
 
 ## Estructura del Proyecto
 
 ```
 blackpixelwebpage/
-├── bin/                    # Archivos de producción
-│   ├── index.html         # Página principal
-│   ├── main.js            # JavaScript principal
-│   ├── style.css          # Estilos CSS
-│   └── assets/            # Recursos estáticos
-│       └── images/        # Imágenes del sitio
-├── lib/                   # Dependencias (si aplica)
-├── .vscode/               # Configuración de VS Code
-├── vercel.json            # Configuración de Vercel
-├── README.md              # Este archivo
-└── .gitignore             # Archivos ignorados por Git
+├── bin/                        # Archivos de producción
+│   ├── index.html             # Página principal
+│   ├── blog.html              # Listado del blog
+│   ├── post-detail.html       # Detalle de post del blog
+│   ├── main.js                # JavaScript principal
+│   ├── style.css              # Estilos CSS personalizados
+│   ├── tailwind-fallback.css  # Estilos críticos de respaldo
+│   └── assets/
+│       └── images/            # Imágenes del sitio
+├── .vscode/                   # Configuración de VS Code
+├── vercel.json                # Configuración de Vercel
+├── README.md                  # Este archivo
+└── .gitignore                 # Archivos ignorados por Git
 ```
 
 ## Instalación y Uso
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/lioncarballo88/blackpixel-web.git
    cd blackpixelwebpage
    ```
 
@@ -55,30 +61,35 @@ blackpixelwebpage/
    - Abrir `http://localhost:8000` en el navegador
 
 3. **Despliegue:**
-   - El proyecto está configurado para desplegarse automáticamente en Vercel
+   - Configurado para desplegarse automáticamente en Vercel desde la rama `master`
    - Los archivos en `bin/` son los que se despliegan
 
 ## Configuración
 
 ### Supabase
-El formulario de contacto utiliza Supabase para almacenar los mensajes. Las credenciales están configuradas en `main.js`. Para producción, considera moverlas a variables de entorno.
+El formulario de contacto usa Supabase para almacenar mensajes en la tabla `contactos`. Las credenciales (anon key pública) están en `main.js`.
 
-### Placeholders
-Antes del despliegue final, actualizar:
-- URLs de Open Graph en `index.html`
-- Enlaces de redes sociales en el footer
-- Información de contacto si es necesario
+### Meta OG
+Las URLs de Open Graph apuntan a `blackpixel.mx` con la imagen `assets/images/blackpixel-share.jpg`.
 
-## Desarrollo
+## Responsive
 
-- Los archivos fuente están en `bin/` (versión optimizada)
-- Usa Tailwind CSS para estilos
-- AOS para animaciones al hacer scroll
-- El formulario envía datos a una tabla 'contactos' en Supabase
+El sitio está optimizado para móvil:
+- Menú hamburguesa funcional en pantallas pequeñas
+- Carrusel horizontal para la sección "El Método" en móvil
+- Carrusel horizontal para testimonios en móvil
+- Portafolio con carrusel nativo en todas las pantallas
+- Tipografía y padding adaptados por breakpoint
+
+## Redes Sociales del Fundador
+
+- GitHub: [github.com/lioncarballo88](https://github.com/lioncarballo88)
+- Instagram: [instagram.com/lion_carballo](https://www.instagram.com/lion_carballo/)
+- WhatsApp: [wa.me/9842044965](https://wa.me/9842044965)
 
 ## Contacto
 
-- Email: lioncarballo@gmail.com
+- Email: hola@blackpixel.mx
 - Ubicación: Tres Valles, Veracruz
 
 ## Licencia
