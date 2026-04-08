@@ -89,7 +89,7 @@ El sitio está optimizado para móvil:
 
 ## Contacto
 
-- Email: hola@blackpixel.mx
+- Email: lioncarballo@gmail.com
 - Ubicación: Tres Valles, Veracruz
 
 ## Licencia
