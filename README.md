@@ -1,98 +1,92 @@
-# Black Pixel - Sitio Web
+# Black Pixel
 
-🌐 **Sitio en vivo:** [blackpixelmkt.netlify.app](https://blackpixelmkt.netlify.app/)
+Sitio web estático tipo portafolio/agencia para practicar maquetación, UI responsiva y manejo de datos desde frontend.
 
-Página web estática para la agencia digital Black Pixel, especializada en diseño web, desarrollo de apps y marketing digital.
+**Demo:** [blackpixelmkt.netlify.app](https://blackpixelmkt.netlify.app/)
 
-## Descripción
+## Resumen
 
-Sitio web de Black Pixel, agencia digital ubicada en Tres Valles, Veracruz. Incluye:
+Este proyecto muestra una landing page principal, un blog estático y una página de detalle por post. Está pensado para que un reclutador pueda revisar rápido:
 
-- Página de inicio con hero section y portafolio de proyectos
-- Sección de servicios con modales informativos (Planificación, Diseño Web, Publicidad)
-- Sección "Acerca del creador" con perfil del fundador
-- El Método Black Pixel (4 pasos)
-- Testimonios de clientes
-- Formulario de contacto integrado con Supabase
-- Blog con 12 artículos y páginas de detalle
-- Diseño completamente responsivo con carruseles en móvil
-- Menú hamburguesa en móvil
+- criterio visual
+- estructura del proyecto
+- manejo de componentes reutilizables
+- formularios con Supabase desde frontend
+- accesibilidad básica y diseño responsive
 
-## Tecnologías Utilizadas
+## Stack
 
-- **HTML5** - Estructura del sitio
-- **Tailwind CSS** (CDN) - Framework de estilos
-- **JavaScript** - Interactividad, modales, carruseles y formulario
-- **AOS (Animate On Scroll)** - Animaciones al hacer scroll
-- **Supabase** - Base de datos para el formulario de contacto
-- **Vercel** - Plataforma de despliegue
+- HTML5
+- Tailwind CSS via CDN
+- JavaScript vanilla
+- AOS para animaciones
+- Supabase para el formulario de contacto
+- Vercel para despliegue estático
 
-## Estructura del Proyecto
+## Lo que resuelve
 
-```
+- Hero, portafolio, servicios, testimonios y contacto en una sola landing
+- Blog con listado y detalle por `slug`
+- Navegación móvil, carruseles y modales
+- Formulario de contacto con feedback visual de envío
+
+## Estructura
+
+```text
 blackpixelwebpage/
-├── bin/                        # Archivos de producción
-│   ├── index.html             # Página principal
-│   ├── blog.html              # Listado del blog
-│   ├── post-detail.html       # Detalle de post del blog
-│   ├── main.js                # JavaScript principal
-│   ├── style.css              # Estilos CSS personalizados
-│   ├── tailwind-fallback.css  # Estilos críticos de respaldo
+├── bin/
+│   ├── index.html
+│   ├── blog.html
+│   ├── post-detail.html
+│   ├── main.js
+│   ├── style.css
+│   ├── tailwind-fallback.css
 │   └── assets/
-│       └── images/            # Imágenes del sitio
-├── .vscode/                   # Configuración de VS Code
-├── vercel.json                # Configuración de Vercel
-├── README.md                  # Este archivo
-└── .gitignore                 # Archivos ignorados por Git
+│       └── images/
+├── vercel.json
+└── README.md
 ```
 
-## Instalación y Uso
+## Cómo correrlo
 
-1. **Clonar el repositorio:**
-   ```bash
-   git clone https://github.com/lioncarballo88/blackpixel-web.git
-   cd blackpixelwebpage
-   ```
+1. Entra a la carpeta `bin/`.
+2. Levanta un servidor local:
 
-2. **Ejecutar localmente:**
-   - Navegar a la carpeta `bin/`
-   - Iniciar un servidor HTTP local:
-     ```bash
-     python -m http.server 8000
-     ```
-   - Abrir `http://localhost:8000` en el navegador
+```bash
+python -m http.server 8000
+```
 
-3. **Despliegue:**
-   - Configurado para desplegarse automáticamente en Vercel desde la rama `master`
-   - Los archivos en `bin/` son los que se despliegan
+3. Abre `http://localhost:8000`.
 
-## Configuración
+## Decisiones técnicas
 
-### Supabase
-El formulario de contacto usa Supabase para almacenar mensajes en la tabla `contactos`. Las credenciales (anon key pública) están en `main.js`.
+- El sitio es estático para mantener despliegue simple y rápido.
+- La lógica de UI vive en un solo archivo JS para no depender de framework.
+- El blog se renderiza desde datos internos del frontend para evitar backend extra.
+- El formulario usa Supabase como persistencia mínima viable.
 
-### Meta OG
-Las URLs de Open Graph apuntan a `blackpixel.mx` con la imagen `assets/images/blackpixel-share.jpg`.
+## Mejoras pendientes
 
-## Responsive
+- Separar `main.js` por responsabilidades.
+- Mover contenido del blog a una sola fuente de verdad.
+- Reemplazar assets faltantes por imágenes finales propias.
+- Extraer navbar y footer a parciales si el sitio sigue creciendo.
 
-El sitio está optimizado para móvil:
-- Menú hamburguesa funcional en pantallas pequeñas
-- Carrusel horizontal para la sección "El Método" en móvil
-- Carrusel horizontal para testimonios en móvil
-- Portafolio con carrusel nativo en todas las pantallas
-- Tipografía y padding adaptados por breakpoint
+## Para reclutadores
 
-## Redes Sociales del Fundador
+Este repo intenta demostrar que puedo:
 
-- GitHub: [github.com/lioncarballo88](https://github.com/lioncarballo88)
-- Instagram: [instagram.com/lion_carballo](https://www.instagram.com/lion_carballo/)
-- WhatsApp: [wa.me/9842044965](https://wa.me/9842044965)
+- construir interfaces limpias y responsivas
+- mantener consistencia visual
+- integrar servicios externos sin framework
+- detectar y corregir deuda técnica
 
 ## Contacto
 
+- GitHub: [lioncarballo88](https://github.com/lioncarballo88)
+- Instagram: [lion_carballo](https://www.instagram.com/lion_carballo/)
+- WhatsApp: [9842044965](https://wa.me/9842044965)
 - Email: lioncarballo@gmail.com
-- Ubicación: Tres Valles, Veracruz
 
 ## Licencia
 
