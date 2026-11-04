@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: añadir la línea Sitemap cuando el dominio definitivo esté publicado:
+# Sitemap: https://blackpixel.mx/sitemap.xml

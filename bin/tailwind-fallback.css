@@ -23,9 +23,8 @@
 .mb-12 { margin-bottom: 3rem; }
 .bg-cyan-400 { background-color: #22d3ee; }
 .text-black { color: #000000; }
-.px-10 { padding-left: 2.5rem; padding-right: 2.5rem; }
 .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
-.text-11px { font-size: 11px; }
+.text-\[11px\] { font-size: 11px; }
 .tracking-0\.2em { letter-spacing: 0.2em; }
 .hover\:bg-white:hover { background-color: #ffffff; }
 .transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
@@ -39,4 +38,55 @@
 @keyframes bounce {
   0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
   50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+
+/* ============================================================
+   Red de seguridad estructural.
+   Solo se activa de verdad si el CDN de Tailwind no carga: en ese
+   caso los modales y el menu movil deben seguir ocultos y el layout
+   no debe romperse. Los valores replican los de Tailwind, asi que
+   cuando Tailwind si carga no cambian nada.
+   ============================================================ */
+.hidden { display: none; }
+.grid { display: grid; }
+.block { display: block; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.relative { position: relative; }
+.fixed { position: fixed; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.overflow-hidden { overflow: hidden; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.max-w-6xl { max-width: 72rem; }
+.object-cover { object-fit: cover; }
+.rounded-full { border-radius: 9999px; }
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Restaura el comportamiento responsive de las utilidades que
+   conviven con .hidden (nav de escritorio, menu movil, grids). */
+@media (min-width: 768px) {
+    .md\:flex { display: flex; }
+    .md\:grid { display: grid; }
+    .md\:block { display: block; }
+    .md\:hidden { display: none; }
 }

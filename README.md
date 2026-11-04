@@ -26,6 +26,7 @@ Este proyecto muestra una landing page principal, un blog estático y una págin
 ## Lo que resuelve
 
 - Hero, portafolio, servicios, testimonios y contacto en una sola landing
+- Casos de estudio por proyecto (`proyecto.html?slug=...`)
 - Blog con listado y detalle por `slug`
 - Navegación móvil, carruseles y modales
 - Formulario de contacto con feedback visual de envío
@@ -38,12 +39,14 @@ blackpixelwebpage/
 │   ├── index.html
 │   ├── blog.html
 │   ├── post-detail.html
+│   ├── proyecto.html        # caso de estudio por proyecto
 │   ├── main.js
 │   ├── style.css
 │   ├── tailwind-fallback.css
 │   └── assets/
 │       └── images/
 ├── vercel.json
+├── wrangler.jsonc
 └── README.md
 ```
 

@@ -1,0 +1,7 @@
+# Configuración de despliegue en Netlify.
+# El sitio es estático y vive en bin/, sin build step.
+[build]
+  publish = "bin"
+
+# URLs limpias: /blog en lugar de /blog.html
+# (main.js detecta las páginas por elementos del DOM, no por el nombre del archivo)

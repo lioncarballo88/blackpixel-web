@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso de estudio | Black Pixel</title>
+    <meta name="description" content="Casos de estudio de Black Pixel: el reto, la solución y los resultados de cada proyecto de diseño web, apps y marketing digital.">
+    <meta name="author" content="Black Pixel">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#09090b">
+    <meta property="og:title" content="Caso de estudio | Black Pixel">
+    <meta property="og:description" content="El reto, la solución y los resultados de los proyectos de Black Pixel.">
+    <meta property="og:image" content="https://blackpixel.mx/assets/images/blackpixel-share.jpg">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Black Pixel">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Caso de estudio | Black Pixel">
+    <meta name="twitter:description" content="El reto, la solución y los resultados de los proyectos de Black Pixel.">
+    <meta name="twitter:image" content="https://blackpixel.mx/assets/images/blackpixel-share.jpg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS de respaldo crítico -->
+    <link rel="stylesheet" href="tailwind-fallback.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- AOS Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+</head>
+<body class="bg-zinc-900 text-gray-100">
+    <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:z-[60] focus:top-4 focus:left-4 focus:bg-black focus:text-white focus:px-4 focus:py-2 focus:rounded focus:outline-none focus:ring-2 focus:ring-cyan-400">
+        Saltar al contenido principal
+    </a>
+
+    <!-- Navbar / Menú de navegación -->
+    <nav aria-label="Navegación principal" class="fixed top-0 left-0 w-full bg-zinc-900/80 backdrop-blur-md z-50 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 md:py-6 flex justify-between items-center">
+            <a href="index.html" aria-label="Ir a la página principal" class="flex items-center group">
+                <div class="w-5 h-5 md:w-6 md:h-6 bg-black mr-2 md:mr-3 shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:bg-[#22D3EE] transition-colors duration-500"></div>
+                <span class="font-black text-2xl md:text-3xl uppercase tracking-tighter text-white group-hover:text-cyan-500 transition-colors">
+                    Black Pixel.
+                </span>
+            </a>
+            <!-- Desktop nav -->
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="index.html#portafolio" aria-current="page" class="text-[#22D3EE] hover:text-white transition-colors">Proyectos</a>
+                <a href="index.html#servicios" class="hover:text-white transition-colors">Servicios</a>
+                <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                <a href="index.html#contacto" class="hover:text-white transition-colors">Contacto</a>
+            </div>
+            <!-- Mobile hamburger -->
+            <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false" type="button">
+                <span class="w-6 h-0.5 bg-white transition-all"></span>
+                <span class="w-6 h-0.5 bg-white transition-all"></span>
+                <span class="w-6 h-0.5 bg-white transition-all"></span>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-800 px-6 py-4 flex flex-col space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
+            <a href="index.html#portafolio" onclick="closeMobileMenu()" class="text-[#22D3EE] hover:text-white transition-colors">Proyectos</a>
+            <a href="index.html#servicios" onclick="closeMobileMenu()" class="hover:text-white transition-colors">Servicios</a>
+            <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+            <a href="index.html#contacto" onclick="closeMobileMenu()" class="hover:text-white transition-colors">Contacto</a>
+        </div>
+    </nav>
+
+    <main id="contenido-principal" class="pt-28 md:pt-32 pb-20">
+        <div class="max-w-6xl mx-auto px-6 md:px-10">
+            <!-- Migas de pan -->
+            <nav aria-label="Ruta de navegación" class="mb-10">
+                <a href="index.html#portafolio" class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-cyan-400 transition-colors">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                    Volver al portafolio
+                </a>
+            </nav>
+
+            <!-- El contenido del caso de estudio se renderiza desde main.js -->
+            <div id="project-case">
+                <p class="text-center text-gray-400 py-20">Cargando caso de estudio…</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-6 md:px-10 py-10 md:py-12 border-t border-zinc-900 bg-zinc-950 text-white">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500">
+
+            <div class="mb-6 md:mb-0">
+                <p>© 2026 Black Pixel. <span class="text-cyan-400 mx-2">|</span> Todos los derechos reservados.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-6 md:mb-0">
+                <button onclick="openModal('modal-privacidad')" class="hover:text-cyan-400 transition">Privacidad</button>
+                <button onclick="openModal('modal-terminos')" class="hover:text-cyan-400 transition">Términos</button>
+                <button onclick="openModal('modal-licencias')" class="hover:text-cyan-400 transition">Licencias</button>
+            </div>
+
+            <div class="flex space-x-6 mt-6 md:mt-0">
+                <a href="https://www.instagram.com/lion_carballo/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition">Instagram</a>
+                <a href="https://wa.me/9842044965" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales Legales -->
+    <div id="modal-privacidad" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[80vh] overflow-y-auto relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-privacidad')" aria-label="Cerrar aviso de privacidad" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Aviso de Privacidad</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p>En <strong>Black Pixel.</strong>, la protección de tus datos es nuestra prioridad. La información recopilada a través de nuestros formularios se utilizará exclusivamente para:</p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                    <li>Responder a tus solicitudes de cotización.</li>
+                    <li>Enviar información sobre servicios de marketing digital.</li>
+                    <li>Mejorar tu experiencia en nuestro sitio web.</li>
+                </ul>
+                <p>No compartimos tus datos con terceros sin tu consentimiento explícito. Al usar nuestro formulario de contacto, aceptas estos términos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-licencias" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-licencias')" aria-label="Cerrar licencias" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Licencias y Recursos</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p><strong>Diseño & Código:</strong> Propiedad intelectual de Black Pixel. © 2026.</p>
+                <p><strong>Imágenes:</strong> Utilizadas bajo licencia de Unsplash / Pexels con fines demostrativos de portafolio.</p>
+                <p><strong>Tecnología:</strong> Tailwind CSS, AOS Library, Google Fonts (Licencia Open Font).</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-terminos" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md transition-opacity duration-300">
+        <div class="bg-[#111] border border-zinc-800 p-8 md:p-12 max-w-2xl w-full max-h-[80vh] overflow-y-auto relative shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal('modal-terminos')" aria-label="Cerrar términos y condiciones" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-light">✕</button>
+            <h2 class="text-2xl font-black text-white uppercase mb-6 text-cyan-400">Términos y Condiciones</h2>
+            <div class="text-gray-400 text-sm space-y-4 leading-relaxed">
+                <p>Bienvenido a Black Pixel. Al acceder y utilizar nuestro sitio web y servicios, aceptas los siguientes términos y condiciones. Por favor, léelos detenidamente.</p>
+
+                <h3>1. Uso del Sitio Web</h3>
+                <p>El contenido de este sitio web es solo para información general y uso personal. Nos reservamos el derecho de modificar o retirar cualquier contenido sin previo aviso.</p>
+
+                <h3>2. Propiedad Intelectual</h3>
+                <p>Todo el contenido (diseños, textos, gráficos, logotipos) es propiedad de Black Pixel o de sus respectivos dueños, y está protegido por las leyes de propiedad intelectual. No se permite la reproducción sin autorización.</p>
+
+                <h3>3. Servicios Ofrecidos</h3>
+                <p>Los detalles de nuestros servicios, incluyendo diseño web, desarrollo de aplicaciones y marketing digital, se describen en este sitio. Cualquier contratación estará sujeta a un acuerdo formal y personalizado.</p>
+
+                <h3>4. Privacidad de Datos</h3>
+                <p>La recopilación y uso de tus datos personales se rige por nuestro Aviso de Privacidad, disponible en este mismo sitio web. Al usar nuestros formularios, aceptas nuestra política de privacidad.</p>
+
+                <h3>5. Limitación de Responsabilidad</h3>
+                <p>Black Pixel no se hace responsable por daños o pérdidas que resulten del uso o la incapacidad de usar nuestro sitio web o servicios. Hacemos nuestro mejor esfuerzo por mantener la información precisa, pero no garantizamos su exactitud total.</p>
+
+                <h3>6. Enlaces a Terceros</h3>
+                <p>Nuestro sitio puede contener enlaces a sitios web de terceros. No somos responsables por el contenido o las prácticas de privacidad de estos sitios.</p>
+
+                <h3>7. Modificaciones a los Términos</h3>
+                <p>Nos reservamos el derecho de actualizar estos Términos y Condiciones en cualquier momento. La versión más reciente será siempre la que esté publicada en esta página.</p>
+
+                <h3>8. Contacto</h3>
+                <p>Para cualquier pregunta sobre estos términos, por favor contáctanos a través de nuestro formulario o al WhatsApp 984 204 4965.</p>
+
+                <p class="mt-8 text-xs text-gray-500">Última actualización: 27 de Marzo de 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Lógicos y Librerías -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

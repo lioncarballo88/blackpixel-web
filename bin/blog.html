@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- AOS Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 </head>
 <body class="bg-zinc-900 text-gray-100">
@@ -36,10 +36,10 @@
     </a>
     <!-- Navbar / Menú de navegación (se copiará de index.html para consistencia) -->
     <nav aria-label="Navegación principal" class="fixed top-0 left-0 w-full bg-zinc-900/80 backdrop-blur-md z-50 border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-10 py-6 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 md:py-6 flex justify-between items-center">
             <a href="index.html" aria-label="Ir a la página principal" class="flex items-center group">
-                <div class="w-6 h-6 bg-black mr-3 shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:bg-[#22D3EE] transition-colors duration-500"></div>
-                <span class="font-black text-3xl uppercase tracking-tighter text-white group-hover:text-cyan-500 transition-colors">
+                <div class="w-5 h-5 md:w-6 md:h-6 bg-black mr-2 md:mr-3 shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:bg-[#22D3EE] transition-colors duration-500"></div>
+                <span class="font-black text-2xl md:text-3xl uppercase tracking-tighter text-white group-hover:text-cyan-500 transition-colors">
                     Black Pixel.
                 </span>
             </a>
@@ -49,6 +49,17 @@
                 <a href="blog.html" aria-current="page" class="text-[#22D3EE] hover:text-white transition-colors">Blog</a>
                 <a href="index.html#contacto" class="hover:text-white transition-colors">Contacto</a>
             </div>
+            <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false" type="button">
+                <span class="w-6 h-0.5 bg-white transition-all"></span>
+                <span class="w-6 h-0.5 bg-white transition-all"></span>
+                <span class="w-6 h-0.5 bg-white transition-all"></span>
+            </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-800 px-6 py-4 flex flex-col space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
+            <a href="index.html#portafolio" onclick="closeMobileMenu()" class="hover:text-white transition-colors">Proyectos</a>
+            <a href="index.html#servicios" onclick="closeMobileMenu()" class="hover:text-white transition-colors">Servicios</a>
+            <a href="blog.html" aria-current="page" class="text-[#22D3EE] hover:text-white transition-colors">Blog</a>
+            <a href="index.html#contacto" onclick="closeMobileMenu()" class="hover:text-white transition-colors">Contacto</a>
         </div>
     </nav>
 
@@ -77,7 +88,7 @@
             </div>
 
             <div class="flex space-x-6 mt-6 md:mt-0">
-                <a href="#" class="text-white hover:text-cyan-400 transition">LinkedIn</a>
+                <a href="https://www.instagram.com/lion_carballo/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition">Instagram</a>
                 <a href="https://wa.me/9842044965" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition">WhatsApp</a>
             </div>
         </div>
@@ -203,6 +214,7 @@
 
     <!-- Scripts Lógicos y Librerías -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
     <script>
         // Inicializar AOS (Animate On Scroll)
         try {

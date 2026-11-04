@@ -45,8 +45,12 @@ try {
 // ==========================================
 // Funciones para Modales
 // ==========================================
+let openModalId = null;
+
 function openModal(id) {
     const modal = document.getElementById(id);
+    if (!modal) return;
+    openModalId = id;
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden'; // Evita el scroll detrás del modal
     
@@ -59,6 +63,8 @@ function openModal(id) {
 
 function closeModal(id) {
     const modal = document.getElementById(id);
+    if (!modal) return;
+    if (openModalId === id) openModalId = null;
     modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
     modal.querySelector('div').classList.add('scale-95', 'opacity-0');
     
@@ -73,6 +79,13 @@ function closeModal(id) {
 window.addEventListener('click', function(event) {
     if (event.target.classList.contains('fixed') && !event.target.classList.contains('hidden')) {
         closeModal(event.target.id);
+    }
+});
+
+// Cerrar con la tecla Escape (accesibilidad)
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && openModalId) {
+        closeModal(openModalId);
     }
 });
 
@@ -781,11 +794,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderBlogPosts(posts) {
         if (!blogPostsContainer) return;
         const fragment = document.createDocumentFragment();
-        posts.forEach(post => {
+        posts.forEach((post, index) => {
             const a = document.createElement('a');
             a.href = `post-detail.html?slug=${post.slug}`;
-            a.className = 'block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300';
-            a.setAttribute('data-aos', 'fade-up');
+            a.className = 'block bg-zinc-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300 fade-in-up';
+            a.style.animationDelay = `${index * 60}ms`;
             a.innerHTML = `
                 <img src="${post.image_url || 'assets/images/placeholder-blog.jpg'}" alt="${post.title}" class="w-full h-48 object-cover">
                 <div class="p-6">
@@ -800,111 +813,173 @@ document.addEventListener("DOMContentLoaded", () => {
         blogPostsContainer.appendChild(fragment);
     }
 
-    // 1. Configuración: Inicializar cliente de Supabase con manejo de errores
+    // 1. Configuración: Inicializar cliente de Supabase solo en páginas con formulario
     let supabaseClient = null;
-    try {
-        if (typeof window.supabase !== 'undefined') {
-            const SUPABASE_URL = 'https://baamgvzfyyjemnvjvuel.supabase.co';
-            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhYW1ndnpmeXlqZW1udmp2dWVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1OTI4NDQsImV4cCI6MjA5MDE2ODg0NH0.lK_ZB2Ae5244eqlTsIBz3uVy2ppcY_ZFh3wWe5RoBco';
+    if (document.getElementById('contactForm')) {
+        try {
+            if (typeof window.supabase !== 'undefined') {
+                const SUPABASE_URL = 'https://baamgvzfyyjemnvjvuel.supabase.co';
+                const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhYW1ndnpmeXlqZW1udmp2dWVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1OTI4NDQsImV4cCI6MjA5MDE2ODg0NH0.lK_ZB2Ae5244eqlTsIBz3uVy2ppcY_ZFh3wWe5RoBco';
 
-            supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            console.log('Supabase inicializado correctamente');
-        } else {
-            console.warn('Supabase library no cargó, el formulario funcionará en modo local');
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            } else {
+                console.warn('Supabase library no cargó, el formulario funcionará en modo local');
+            }
+        } catch (error) {
+            console.warn('Error inicializando Supabase:', error);
         }
-    } catch (error) {
-        console.warn('Error inicializando Supabase:', error);
     }
     // 2. Manejador del Formulario
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+    const formWhatsApp = document.getElementById('formWhatsApp');
+    const WHATSAPP_NUMBER = '529842044965';
 
-    if(form && submitBtn) {
+    function setFormStatus(message, type) {
+        if (!formStatus) return;
+        formStatus.classList.remove('hidden', 'text-green-600', 'text-red-600');
+        formStatus.textContent = message;
+        if (!message) {
+            formStatus.classList.add('hidden');
+            return;
+        }
+        formStatus.classList.add(type === 'ok' ? 'text-green-600' : 'text-red-600');
+    }
+
+    if (form && submitBtn) {
+        const btnTextOriginal = submitBtn.textContent.trim();
+        let sending = false;
+
         form.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Previene que la página intente hacer POST y recargue
-            
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const mensaje = document.getElementById('mensaje').value;
+            e.preventDefault(); // Evita que la página recargue
 
-            // Cambiar estado del botón para indicar carga
-            const btnTextOriginal = submitBtn.innerText;
-            submitBtn.innerText = 'ENVIANDO...';
+            if (sending) return;
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+            const honeypot = document.getElementById('website');
+
+            // Honeypot: solo un bot rellena este campo. Fingimos éxito y no enviamos nada.
+            if (honeypot && honeypot.value.trim() !== '') {
+                form.reset();
+                setFormStatus('¡Gracias! Tu mensaje fue recibido.', 'ok');
+                return;
+            }
+
+            if (!nombre || !email || !mensaje) {
+                setFormStatus('Completa tu nombre, email y mensaje.', 'error');
+                return;
+            }
+
+            sending = true;
+            submitBtn.textContent = 'ENVIANDO...';
             submitBtn.disabled = true;
+            submitBtn.setAttribute('aria-busy', 'true');
             submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            setFormStatus('', 'idle');
+            if (formWhatsApp) formWhatsApp.classList.add('hidden');
 
             try {
-                if (supabaseClient) {
-                    // Llamada a Supabase
-                    const { data, error } = await supabaseClient
-                        .from('contactos')
-                        .insert([
-                            { nombre: nombre, email: email, mensaje: mensaje }
-                        ]);
-
-                    if (error) {
-                        console.error('Error detallado de Supabase:', error);
-                        throw error;
-                    }
-                } else {
-                    // Simular envío exitoso si Supabase no está disponible
-                    console.log('Modo offline: Simulando envío del formulario');
-                    await new Promise(resolve => setTimeout(resolve, 1000)); // Simular delay
+                if (!supabaseClient) {
+                    throw new Error('El servicio de mensajes no está disponible.');
                 }
 
-                // Éxito: Modificar botón y limpiar
-                submitBtn.innerText = '¡MENSAJE ENVIADO!';
-                submitBtn.classList.replace('bg-black', 'bg-green-500');
-                form.reset();
+                // Tiempo máximo de espera para no dejar el botón colgado
+                const { error } = await Promise.race([
+                    supabaseClient.from('contactos').insert([{ nombre, email, mensaje }]),
+                    new Promise((resolve, reject) => {
+                        setTimeout(() => reject(new Error('Tiempo de espera agotado.')), 12000);
+                    })
+                ]);
 
-                // Restaurar el botón después de 3 segundos
+                if (error) throw error;
+
+                form.reset();
+                submitBtn.textContent = '¡MENSAJE ENVIADO!';
+                submitBtn.classList.replace('bg-black', 'bg-green-500');
+                setFormStatus('Mensaje enviado. Te contactamos en menos de 24 horas.', 'ok');
+
                 setTimeout(() => {
-                    submitBtn.innerText = btnTextOriginal;
+                    submitBtn.textContent = btnTextOriginal;
                     submitBtn.classList.replace('bg-green-500', 'bg-black');
                     submitBtn.disabled = false;
+                    submitBtn.removeAttribute('aria-busy');
                     submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-                }, 3000);
-
+                }, 4000);
             } catch (error) {
-                console.error('Error enviando mensaje:', error.message);
-                alert(`Error al enviar: ${error.message}. El mensaje se guardará localmente.`);
-                
-                // Restaurar botón en caso de error
-                submitBtn.innerText = btnTextOriginal;
+                // Sin falso positivo: avisamos del fallo y ofrecemos WhatsApp con el mensaje ya escrito.
+                console.error('Error enviando mensaje:', error);
+                submitBtn.textContent = btnTextOriginal;
                 submitBtn.disabled = false;
+                submitBtn.removeAttribute('aria-busy');
                 submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+
+                setFormStatus('No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directo:', 'error');
+
+                if (formWhatsApp) {
+                    const texto = `Hola Black Pixel, soy ${nombre}. Mi email es ${email}. Mensaje: ${mensaje}`;
+                    formWhatsApp.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+                    formWhatsApp.classList.remove('hidden');
+                }
+            } finally {
+                sending = false;
             }
         });
     }
 
     // ==========================================
     // Lógica para el Blog
+    // Se activa por la presencia del contenedor, no por el nombre del archivo:
+    // Netlify sirve URLs limpias (/blog) y comprobar `pathname.includes('blog.html')`
+    // dejaba el listado vacío en producción.
     // ==========================================
-    const currentPath = window.location.pathname;
-
-    if (currentPath.includes('blog.html')) {
-        if (blogPostsContainer) {
-            renderBlogPosts(BLOG_POSTS);
-        }
+    if (blogPostsContainer) {
+        renderBlogPosts(BLOG_POSTS);
     }
 
     // ==========================================
     // Lógica para el Detalle de Post
+    // Mismo criterio: el contenedor existe solo en post-detail.
     // ==========================================
-    if (currentPath.includes('post-detail.html')) {
-        const blogPostContent = document.getElementById('blog-post-content');
+    const blogPostContent = document.getElementById('blog-post-content');
+
+    if (blogPostContent) {
         const postTitleElement = document.getElementById('post-title');
 
         function renderPostDetail(post) {
             postTitleElement.innerText = post.title;
+            document.title = post.title + ' | Black Pixel';
+
+            // Metadatos por artículo (compartir en redes y buscadores)
+            const pageUrl = window.location.origin + window.location.pathname + '?slug=' + encodeURIComponent(post.slug);
+            const metaValues = [
+                ['meta[name="description"]', (post.excerpt || '').slice(0, 155)],
+                ['meta[property="og:title"]', post.title + ' | Black Pixel'],
+                ['meta[property="og:description"]', (post.excerpt || '').slice(0, 155)],
+                ['meta[property="og:url"]', pageUrl],
+                ['meta[name="twitter:title"]', post.title + ' | Black Pixel'],
+                ['meta[name="twitter:description"]', (post.excerpt || '').slice(0, 155)]
+            ];
+            if (post.image_url) {
+                metaValues.push(['meta[property="og:image"]', post.image_url]);
+                metaValues.push(['meta[name="twitter:image"]', post.image_url]);
+            }
+            metaValues.forEach(([selector, value]) => {
+                const el = document.querySelector(selector);
+                if (el && value) el.setAttribute('content', value);
+            });
+
+            blogPostContent.classList.add('fade-in-up');
             blogPostContent.innerHTML = `
-                <h1 class="text-4xl md:text-5xl font-black uppercase text-white mb-6 leading-tight" data-aos="fade-up">${post.title}</h1>
-                <p class="text-gray-500 text-sm mb-8" data-aos="fade-up" data-aos-delay="100">Por ${post.author || 'Black Pixel'} el ${new Date(post.published_at).toLocaleDateString()}</p>
-                <img src="${post.image_url || 'assets/images/placeholder-blog.jpg'}" alt="${post.title}" class="w-full h-64 object-cover rounded-lg mb-8" data-aos="fade-up" data-aos-delay="200">
-                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-4" data-aos="fade-up" data-aos-delay="300">
+                <h1 class="text-4xl md:text-5xl font-black uppercase text-white mb-6 leading-tight">${post.title}</h1>
+                <p class="text-gray-500 text-sm mb-8">Por ${post.author || 'Black Pixel'} el ${new Date(post.published_at).toLocaleDateString()}</p>
+                <img src="${post.image_url || 'assets/images/placeholder-blog.jpg'}" alt="${post.title}" class="w-full h-64 object-cover rounded-lg mb-8">
+                <div class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-4">
                     ${post.content}
                 </div>
-                <div class="mt-12 pt-8 border-t border-zinc-800" data-aos="fade-up" data-aos-delay="400">
+                <div class="mt-12 pt-8 border-t border-zinc-800">
                     <a href="blog.html" class="text-cyan-400 hover:text-white transition-colors text-sm uppercase font-semibold">&larr; Volver al Blog</a>
                 </div>
             `;
@@ -926,6 +1001,303 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             blogPostContent.innerHTML = '<p class="text-gray-400 text-center">Post no encontrado.</p>';
             postTitleElement.innerText = 'Post No Encontrado';
+        }
+    }
+
+    // ==========================================
+    // Casos de estudio (proyecto.html)
+    // Se activa por la existencia del contenedor, no por el nombre del
+    // archivo: funciona igual con URLs limpias (/proyecto) o con .html.
+    // ==========================================
+    const PROJECTS = [
+        {
+            slug: 'zavala-ashane',
+            name: 'Zavala Ashane Builders',
+            category: 'Diseño Web • Construcción',
+            tagline: 'Un sitio propio para una constructora que vivía solo de recomendaciones boca a boca.',
+            year: '2026',
+            location: 'The Woodlands, Texas',
+            services: ['Diseño web', 'Identidad digital', 'Arquitectura de contenido', 'SEO local'],
+            site: 'https://zavalaashanebuilders.com',
+            summary: 'Zavala Ashane Builders construye casas, terrenos y proyectos multifamiliares en The Woodlands, Texas. Su trabajo se movía por referidos y redes sociales, pero no existía un lugar oficial donde un cliente potencial pudiera ver la obra, conocer el proceso y pedir una cotización sin depender de un mensaje suelto.',
+            challenge: [
+                'Quien buscaba la empresa en Google no encontraba un sitio oficial, solo perfiles sociales dispersos.',
+                'La obra es el mejor argumento de venta, pero no había un espacio ordenado para mostrarla.',
+                'Los prospectos llegaban por WhatsApp sin contexto: había que responder siempre lo mismo.',
+                'El público está en Estados Unidos: el contenido debía ir en inglés, cargar rápido y leerse perfecto en el celular.'
+            ],
+            solution: [
+                {
+                    title: 'Contenido antes que decoración',
+                    text: 'Reordenamos el sitio para que primero se vea la obra y luego, en una sección aparte, las propiedades en venta: casas, terrenos, multifamiliar y comercial.'
+                },
+                {
+                    title: 'Una identidad sobria',
+                    text: 'Paleta oscura, tipografía de peso alto y mucho aire. El diseño no compite con las fotos de los proyectos: las enmarca.'
+                },
+                {
+                    title: 'Captación sin fricción',
+                    text: 'Formulario de contacto con validación, mensajes de estado claros y accesos directos a WhatsApp desde cada sección.'
+                },
+                {
+                    title: 'Rendimiento primero',
+                    text: 'Sitio estático sin frameworks ni build: HTML, CSS y JavaScript propios, animaciones discretas y navegación móvil completa.'
+                }
+            ],
+            results: [
+                'Dominio propio y sitio publicado (zavalaashanebuilders.com).',
+                'Secciones de proyectos, propiedades en venta, servicios, proceso y testimonios.',
+                'Filtros de portafolio por tipo de proyecto y ficha por propiedad con estado (en venta, en contrato, vendida).',
+                'Formulario de contacto en producción con respaldo por WhatsApp.',
+                'Medición de tráfico y leads pendiente: es el siguiente paso con Search Console y analítica.'
+            ],
+            stack: ['HTML5', 'CSS3', 'JavaScript vanilla', 'Deploy estático']
+        },
+        {
+            slug: 'repro-ai',
+            name: 'Repro AI Asistente',
+            category: 'App Móvil • IA',
+            tagline: 'Una app que responde con inteligencia en lugar de mandar al usuario a buscar en un menú.',
+            year: '2026',
+            location: 'Producto propio',
+            services: ['Diseño de producto', 'Interfaz móvil', 'Integración de IA'],
+            site: 'https://polite-pasca-922737.netlify.app/',
+            summary: 'Repro AI nació como un experimento de producto: tomar la lógica de un asistente conversacional y aplicarla a una app móvil ligera, sin la fricción de un panel con veinte opciones.',
+            challenge: [
+                'Las apps de asistencia suelen castigar al usuario con menús y formularios antes de dar una respuesta.',
+                'Integrar un modelo de lenguaje sin que la interfaz se sienta lenta o rota.',
+                'Mantener una identidad visual propia dentro de las limitaciones de una interfaz conversacional.'
+            ],
+            solution: [
+                {
+                    title: 'Conversación como navegación',
+                    text: 'La pantalla principal es el chat: se elimina el menú y se deja que el usuario escriba lo que necesita.'
+                },
+                {
+                    title: 'Estados siempre visibles',
+                    text: 'Indicadores de carga, errores y respuestas parciales para que la app nunca parezca congelada.'
+                },
+                {
+                    title: 'Identidad mínima',
+                    text: 'Tipografía y color trabajados para que la app se reconozca sin necesidad de ilustraciones pesadas.'
+                }
+            ],
+            results: [
+                'Prototipo funcional publicado y navegable en móvil.',
+                'Flujo de conversación completo, desde el saludo hasta la respuesta.',
+                'Base reutilizable para futuros asistentes verticales de otros clientes.'
+            ],
+            stack: ['JavaScript', 'Interfaz móvil', 'Integración de IA', 'Deploy estático']
+        },
+        {
+            slug: 'interprete-legal',
+            name: 'Intérprete Legal',
+            category: 'Identidad • Corporativo',
+            tagline: 'Seriedad visual para un servicio que se juega la confianza en los primeros cinco segundos.',
+            year: '2026',
+            location: 'Servicios legales',
+            services: ['Identidad digital', 'Diseño web', 'Contenido'],
+            site: 'https://interpretelegaldocu.netlify.app/',
+            summary: 'Un servicio de interpretación legal necesita proyectar exactitud. El proyecto arrancó con una página de presentación que ordena los servicios y transmite autoridad sin caer en el cliché del despacho jurídico.',
+            challenge: [
+                'El sector legal abusa del azul marino, la balanza y la serif genérica: nada memorable.',
+                'El cliente potencial necesita entender el servicio en segundos y saber cómo contratar.',
+                'El sitio debía verse serio tanto para un particular como para un despacho.'
+            ],
+            solution: [
+                {
+                    title: 'Jerarquía estricta',
+                    text: 'Un mensaje principal, los servicios y una sola llamada a la acción. Nada más compitiendo por atención.'
+                },
+                {
+                    title: 'Contraste y sobriedad',
+                    text: 'Fondo oscuro, tipografía fuerte y acentos medidos para transmitir precisión.'
+                },
+                {
+                    title: 'Contacto directo',
+                    text: 'El camino a la contratación queda a un clic desde cualquier punto de la página.'
+                }
+            ],
+            results: [
+                'Sitio publicado con identidad visual definida.',
+                'Servicios y proceso explicados sin jerga.',
+                'Base de marca lista para extenderse a tarjetas y documentación.'
+            ],
+            stack: ['HTML5', 'CSS3', 'JavaScript vanilla', 'Deploy estático']
+        }
+    ];
+
+    const projectCaseContainer = document.getElementById('project-case');
+
+    if (projectCaseContainer) {
+        const setMeta = (selector, value) => {
+            const el = document.querySelector(selector);
+            if (el) el.setAttribute('content', value);
+        };
+
+        const renderProjectCase = (project, projects) => {
+            const index = projects.indexOf(project);
+            const next = projects[(index + 1) % projects.length];
+            const host = (() => {
+                try { return new URL(project.site).hostname.replace(/^www\./, ''); }
+                catch (e) { return project.site; }
+            })();
+
+            const metaRows = [
+                ['Cliente', project.name],
+                ['Año', project.year],
+                ['Ubicación', project.location],
+                ['Sitio', host]
+            ].concat([['Servicios', project.services.join(' · ')]]);
+
+            projectCaseContainer.innerHTML = `
+                <header class="mb-12 fade-in-up">
+                    <span class="inline-block bg-black text-cyan-400 font-black uppercase text-[10px] tracking-[0.4em] px-4 py-2 border border-zinc-800 mb-6">
+                        ${project.category}
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none mb-5">
+                        ${project.name}
+                    </h1>
+                    <p class="text-gray-400 text-lg md:text-xl max-w-3xl font-light leading-relaxed mb-8">
+                        ${project.tagline}
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="${project.site}" target="_blank" rel="noopener noreferrer" class="bg-cyan-400 text-black px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] hover:bg-white transition-colors duration-500 text-center">
+                            Visitar el sitio &nearr;
+                        </a>
+                        <a href="index.html#contacto" class="border border-zinc-700 bg-black text-white px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] hover:border-cyan-500 hover:text-cyan-400 transition-colors duration-500 text-center">
+                            Quiero algo así
+                        </a>
+                    </div>
+                </header>
+
+                <div class="relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 shadow-2xl mb-16 fade-in-up" style="animation-delay:100ms">
+                    <div class="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-800 bg-zinc-900">
+                        <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+                        <span class="ml-3 text-[10px] uppercase tracking-widest text-gray-500 truncate">${host}</span>
+                    </div>
+                    <div class="relative aspect-[16/10]">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-zinc-900 via-black to-zinc-800">
+                            <span class="px-6 text-center text-2xl md:text-4xl font-black uppercase tracking-tighter text-white/10">${project.name}</span>
+                        </div>
+                        <iframe src="${project.site}" title="Vista previa del sitio de ${project.name}" sandbox="allow-scripts allow-same-origin allow-popups" class="absolute inset-0 w-full h-full border-0 pointer-events-none" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <section aria-label="Ficha del proyecto" class="mb-16 fade-in-up" style="animation-delay:150ms">
+                    <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-800 border border-zinc-800">
+                        ${metaRows.map(([label, value]) => `
+                            <div class="bg-zinc-950 p-5">
+                                <dt class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-2">${label}</dt>
+                                <dd class="text-white text-sm font-bold">${value}</dd>
+                            </div>
+                        `).join('')}
+                    </dl>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black uppercase text-white mb-6">El <span class="text-[#22D3EE]">reto</span></h2>
+                    <p class="text-gray-400 leading-relaxed max-w-3xl mb-8">${project.summary}</p>
+                    <ul class="space-y-4 max-w-3xl">
+                        ${project.challenge.map(item => `
+                            <li class="flex items-start gap-4 text-gray-400 leading-relaxed">
+                                <span class="text-cyan-400 font-black mt-1">→</span>
+                                <span>${item}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black uppercase text-white mb-8">La <span class="text-[#22D3EE]">solución</span></h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${project.solution.map((item, i) => `
+                            <article class="border border-zinc-800 bg-[#0a0a0a] p-8 hover:border-cyan-400/60 transition-colors">
+                                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 block mb-3">${String(i + 1).padStart(2, '0')}</span>
+                                <h3 class="text-lg font-black uppercase text-white mb-3">${item.title}</h3>
+                                <p class="text-sm text-gray-500 leading-relaxed">${item.text}</p>
+                            </article>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black uppercase text-white mb-8">Los <span class="text-[#22D3EE]">resultados</span></h2>
+                    <ul class="space-y-4 max-w-3xl">
+                        ${project.results.map(item => `
+                            <li class="flex items-start gap-4 text-gray-400 leading-relaxed">
+                                <svg class="w-4 h-4 text-cyan-400 mt-1.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                <span>${item}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-10">
+                        ${project.stack.map(tech => `
+                            <span class="border border-zinc-800 bg-zinc-950 text-gray-400 text-[10px] font-black uppercase tracking-widest px-4 py-2">${tech}</span>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <section class="border-t border-zinc-800 pt-12 mb-16">
+                    <p class="text-3xl md:text-4xl font-black uppercase text-white leading-none mb-6">¿Tu proyecto es el <span class="text-[#22D3EE]">siguiente?</span></p>
+                    <a href="index.html#contacto" class="inline-block bg-cyan-400 text-black px-10 py-5 font-black uppercase text-[11px] tracking-[0.2em] hover:bg-white transition-colors duration-500">
+                        Diagnóstico de mi marca
+                    </a>
+                </section>
+
+                <nav aria-label="Siguiente proyecto" class="border-t border-zinc-800 pt-8">
+                    <a href="proyecto.html?slug=${next.slug}" class="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <span class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500">Siguiente proyecto</span>
+                        <span class="flex items-center gap-3 text-white font-black uppercase text-xl md:text-2xl tracking-tighter group-hover:text-cyan-400 transition-colors">
+                            ${next.name}
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </span>
+                    </a>
+                </nav>
+            `;
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const projectSlug = params.get('slug');
+        const currentProject = PROJECTS.find(p => p.slug === projectSlug);
+
+        if (currentProject) {
+            renderProjectCase(currentProject, PROJECTS);
+            document.title = currentProject.name + ' | Caso de estudio — Black Pixel';
+            const summaryMeta = currentProject.summary.slice(0, 155);
+            setMeta('meta[name="description"]', summaryMeta);
+            setMeta('meta[property="og:title"]', currentProject.name + ' | Caso de estudio — Black Pixel');
+            setMeta('meta[property="og:description"]', summaryMeta);
+            setMeta('meta[name="twitter:title"]', currentProject.name + ' | Caso de estudio — Black Pixel');
+            setMeta('meta[name="twitter:description"]', summaryMeta);
+        } else if (projectSlug) {
+            projectCaseContainer.innerHTML = `
+                <div class="text-center py-20">
+                    <p class="text-2xl font-black uppercase text-white mb-4">Proyecto no encontrado</p>
+                    <p class="text-gray-500 mb-8">El caso de estudio que buscas no existe o cambió de nombre.</p>
+                    <a href="index.html#portafolio" class="inline-block bg-cyan-400 text-black px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] hover:bg-white transition-colors">Ver todos los proyectos</a>
+                </div>
+            `;
+        } else {
+            projectCaseContainer.innerHTML = `
+                <div class="mb-14">
+                    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4">Casos de <span class="text-[#22D3EE]">estudio</span></h1>
+                    <p class="text-gray-400 max-w-2xl leading-relaxed">El reto, la solución y lo que quedó funcionando en cada proyecto.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    ${PROJECTS.map(p => `
+                        <a href="proyecto.html?slug=${p.slug}" class="group border border-zinc-800 bg-[#0a0a0a] p-8 hover:border-cyan-400/60 transition-colors">
+                            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 block mb-3">${p.category}</span>
+                            <h2 class="text-2xl font-black uppercase text-white mb-3 group-hover:text-cyan-400 transition-colors">${p.name}</h2>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-6">${p.tagline}</p>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-white border-b border-zinc-700 pb-1 group-hover:border-cyan-400 transition-colors">Leer el caso</span>
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+            document.title = 'Casos de estudio | Black Pixel';
         }
     }
 });
