@@ -967,8 +967,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 metaValues.push(['meta[name="twitter:image"]', post.image_url]);
             }
             metaValues.forEach(([selector, value]) => {
-                const el = document.querySelector(selector);
-                if (el && value) el.setAttribute('content', value);
+                if (!value) return;
+                let el = document.querySelector(selector);
+                if (!el) {
+                    const match = selector.match(/^meta\[(name|property)="([^"]+)"\]$/);
+                    if (!match) return;
+                    el = document.createElement('meta');
+                    el.setAttribute(match[1], match[2]);
+                    document.head.appendChild(el);
+                }
+                el.setAttribute('content', value);
             });
 
             blogPostContent.classList.add('fade-in-up');
@@ -1131,8 +1139,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (projectCaseContainer) {
         const setMeta = (selector, value) => {
-            const el = document.querySelector(selector);
-            if (el) el.setAttribute('content', value);
+            if (!value) return;
+            let el = document.querySelector(selector);
+            if (!el) {
+                const match = selector.match(/^meta\[(name|property)="([^"]+)"\]$/);
+                if (!match) return;
+                el = document.createElement('meta');
+                el.setAttribute(match[1], match[2]);
+                document.head.appendChild(el);
+            }
+            el.setAttribute('content', value);
         };
 
         const renderProjectCase = (project, projects) => {
@@ -1267,9 +1283,11 @@ document.addEventListener("DOMContentLoaded", () => {
             renderProjectCase(currentProject, PROJECTS);
             document.title = currentProject.name + ' | Caso de estudio — Black Pixel';
             const summaryMeta = currentProject.summary.slice(0, 155);
+            const caseUrl = window.location.origin + window.location.pathname + '?slug=' + encodeURIComponent(currentProject.slug);
             setMeta('meta[name="description"]', summaryMeta);
             setMeta('meta[property="og:title"]', currentProject.name + ' | Caso de estudio — Black Pixel');
             setMeta('meta[property="og:description"]', summaryMeta);
+            setMeta('meta[property="og:url"]', caseUrl);
             setMeta('meta[name="twitter:title"]', currentProject.name + ' | Caso de estudio — Black Pixel');
             setMeta('meta[name="twitter:description"]', summaryMeta);
         } else if (projectSlug) {

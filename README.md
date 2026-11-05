@@ -47,6 +47,7 @@ blackpixelwebpage/
 │       └── images/
 ├── vercel.json
 ├── wrangler.jsonc
+├── netlify.toml          # publish = "bin"
 └── README.md
 ```
 
@@ -60,6 +61,18 @@ python -m http.server 8000
 ```
 
 3. Abre `http://localhost:8000`.
+
+## Dominio y SEO
+
+Mientras el dominio propio no esté publicado, el sitio usa como base:
+
+```text
+https://blackpixelmkt.netlify.app
+```
+
+Aparece en `canonical`, `og:url`, `og:image` y `twitter:image` de las cuatro páginas HTML.
+Cuando el dominio definitivo esté activo, hay que reemplazar esa base en `bin/*.html`
+y descomentar la línea `Sitemap` en `bin/robots.txt`.
 
 ## Decisiones técnicas
 
