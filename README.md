@@ -20,7 +20,7 @@ Este proyecto muestra una landing page principal, un blog estático y una págin
 - Tailwind CSS compilado (3.4, sin CDN)
 - JavaScript vanilla
 - AOS para animaciones
-- Supabase para el formulario de contacto
+- Netlify Forms para el formulario de contacto (sin SDK ni claves en el cliente)
 - Meta Pixel (eventos `PageView` y `Lead`)
 - Netlify para despliegue estático (`vercel.json` y `wrangler.jsonc` quedan como alternativas)
 
@@ -121,7 +121,10 @@ https://blackpixelmkt.netlify.app/tarjeta-digital
 - El sitio es estático para mantener despliegue simple y rápido.
 - La lógica de UI vive en un solo archivo JS para no depender de framework.
 - El blog se renderiza desde datos internos del frontend para evitar backend extra.
-- El formulario usa Supabase como persistencia mínima viable.
+- El formulario usa Netlify Forms: los envíos quedan en el panel de Netlify
+  (Forms) y se pueden notificar por correo. No hay claves ni SDK en el cliente.
+  Solo funciona desplegado en Netlify; en local el POST devuelve 501 y el sitio
+  ofrece el respaldo por WhatsApp.
 
 ## Mejoras pendientes
 

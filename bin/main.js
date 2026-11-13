@@ -102,7 +102,7 @@ function setCanonical(url) {
 }
 
 // ==========================================
-// Configuración de Supabase y Formulario
+// Configuración del formulario de contacto (Netlify Forms)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const BLOG_POSTS = [
@@ -825,22 +825,9 @@ document.addEventListener("DOMContentLoaded", () => {
         blogPostsContainer.appendChild(fragment);
     }
 
-    // 1. Configuración: Inicializar cliente de Supabase solo en páginas con formulario
-    let supabaseClient = null;
-    if (document.getElementById('contactForm')) {
-        try {
-            if (typeof window.supabase !== 'undefined') {
-                const SUPABASE_URL = 'https://baamgvzfyyjemnvjvuel.supabase.co';
-                const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhYW1ndnpmeXlqZW1udmp2dWVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1OTI4NDQsImV4cCI6MjA5MDE2ODg0NH0.lK_ZB2Ae5244eqlTsIBz3uVy2ppcY_ZFh3wWe5RoBco';
+    // 1. El formulario se envía a Netlify Forms (sin SDK ni claves en el cliente)
+    const FORM_NAME = 'contacto';
 
-                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            } else {
-                console.warn('Supabase library no cargó, el formulario funcionará en modo local');
-            }
-        } catch (error) {
-            console.warn('Error inicializando Supabase:', error);
-        }
-    }
     // 2. Manejador del Formulario
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -902,21 +889,32 @@ document.addEventListener("DOMContentLoaded", () => {
             if (formWhatsApp) formWhatsApp.classList.add('hidden');
 
             try {
-                if (!supabaseClient) {
-                    throw new Error('El servicio de mensajes no está disponible.');
-                }
+                // Netlify Forms: POST urlencoded a la raíz del sitio
+                const payload = new URLSearchParams({
+                    'form-name': FORM_NAME,
+                    'bot-field': honeypot ? honeypot.value.trim() : '',
+                    nombre: nombre,
+                    email: email,
+                    mensaje: mensaje,
+                    privacidad: consent && consent.checked ? 'aceptado' : 'no'
+                });
 
                 // Tiempo máximo de espera para no dejar el botón colgado
-                const { error } = await Promise.race([
-                    supabaseClient.from('contactos').insert([{ nombre, email, mensaje }]),
+                await Promise.race([
+                    fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: payload.toString()
+                    }).then((response) => {
+                        if (!response.ok) throw new Error('Respuesta ' + response.status);
+                        return response;
+                    }),
                     new Promise((resolve, reject) => {
                         setTimeout(() => reject(new Error('Tiempo de espera agotado.')), 12000);
                     })
                 ]);
 
-                if (error) throw error;
-
-                // Conversión para Meta Ads: solo si el mensaje se guardó en Supabase
+                // Conversión para Meta Ads: solo si el envío se confirmó
                 if (window.fbq) {
                     fbq('track', 'Lead', {
                         content_name: 'Formulario de contacto',
