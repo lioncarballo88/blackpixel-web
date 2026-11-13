@@ -834,7 +834,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = document.getElementById('submitBtn');
     const formStatus = document.getElementById('formStatus');
     const formWhatsApp = document.getElementById('formWhatsApp');
-    const WHATSAPP_NUMBER = '529842044965';
+    const WHATSAPP_NUMBER = '522741390272';
 
     function setFormStatus(message, type) {
         if (!formStatus) return;
