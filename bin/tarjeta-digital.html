@@ -11,25 +11,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<!-- ============================================================
-     META PIXEL
-     Pega tu ID de píxel (Events Manager) entre las comillas de
-     META_PIXEL_ID. Si queda vacío, no se carga nada ni hay errores.
-     ============================================================ -->
-<script>
-  window.META_PIXEL_ID = ""; // ej. "123456789012345"
-  if (window.META_PIXEL_ID) {
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,"script","https://connect.facebook.net/en_US/fbevents.js");
-    fbq("init", window.META_PIXEL_ID);
-    fbq("track", "PageView");
-  }
-</script>
+<!-- Meta Pixel — código base en assets/meta-pixel.js -->
+<script src="assets/meta-pixel.js"></script>
 <noscript><img height="1" width="1" style="display:none" alt=""
-  src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+  src="https://www.facebook.com/tr?id=29146698098325912&ev=PageView&noscript=1" /></noscript>
 <style>
   :root{
     --bg:#eef3f6;
