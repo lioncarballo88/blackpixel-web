@@ -2,7 +2,7 @@
 
 Sitio web estático tipo portafolio/agencia para practicar maquetación, UI responsiva y manejo de datos desde frontend.
 
-**Demo:** [blackpixelmkt.netlify.app](https://blackpixelmkt.netlify.app/)
+**Demo:** [bpmkkt.netlify.app](https://bpmkkt.netlify.app/)
 
 ## Resumen
 
@@ -91,7 +91,7 @@ añádela ahí o sus clases no se generarán.
 Mientras el dominio propio no esté publicado, el sitio usa como base:
 
 ```text
-https://blackpixelmkt.netlify.app
+https://bpmkkt.netlify.app
 ```
 
 Aparece en `canonical`, `og:url`, `og:image` y `twitter:image` de las cuatro páginas HTML.
@@ -103,7 +103,7 @@ y descomentar la línea `Sitemap` en `bin/robots.txt`.
 `bin/tarjeta-digital.html` es una landing independiente para campañas de Meta:
 
 ```text
-https://blackpixelmkt.netlify.app/tarjeta-digital
+https://bpmkkt.netlify.app/tarjeta-digital
 ```
 
 - Lleva `noindex` para no competir con el sitio principal en Google.
