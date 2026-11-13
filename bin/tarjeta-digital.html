@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Tarjeta Digital de Black Pixel: tu foto, lo que haces o vendes, tus servicios y un botón de WhatsApp en un solo enlace. Gratis para las primeras 20 personas de esta promoción." />
+<meta name="robots" content="noindex,follow" />
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+<title>Tarjeta Digital — Black Pixel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- ============================================================
+     META PIXEL
+     Pega tu ID de píxel (Events Manager) entre las comillas de
+     META_PIXEL_ID. Si queda vacío, no se carga nada ni hay errores.
+     ============================================================ -->
+<script>
+  window.META_PIXEL_ID = ""; // ej. "123456789012345"
+  if (window.META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,"script","https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", window.META_PIXEL_ID);
+    fbq("track", "PageView");
+  }
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+<style>
+  :root{
+    --bg:#eef3f6;
+    --bg-soft:#e3ebef;
+    --surface:#ffffff;
+    --surface-2:#f4f8fa;
+    --ink:#0a141f;
+    --muted:#48606f;
+    --faint:#6d8595;
+    --line:#d3dfe6;
+    --accent:#0284c7;
+    --accent-ink:#0369a1;
+    --accent-soft:#e0f2fe;
+    --wa:#128c4a;
+    --wa-ink:#ffffff;
+    --gold:#b45309;
+    --gold-soft:#fef3c7;
+    --phone-bg:#0a141f;
+    --shadow:0 18px 44px rgba(8,30,46,.16);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#04080d;
+      --bg-soft:#071019;
+      --surface:#0a141f;
+      --surface-2:#0e1c2b;
+      --ink:#eef6fb;
+      --muted:#9db4c6;
+      --faint:#71899c;
+      --line:#1c3043;
+      --accent:#22d3ee;
+      --accent-ink:#67e8f9;
+      --accent-soft:#0b2a3a;
+      --wa:#25d366;
+      --wa-ink:#04160b;
+      --gold:#fbbf24;
+      --gold-soft:#2a2008;
+      --phone-bg:#020507;
+      --shadow:0 18px 44px rgba(0,0,0,.55);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition:none!important;animation:none!important}
+  }
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:16.5px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Sora","Manrope",system-ui,sans-serif;line-height:1.12;margin:0}
+  p{margin:0}
+  a{color:var(--accent-ink)}
+  img{display:block;max-width:100%}
+  button,[role="button"],select,summary,input:not([type="checkbox"],[type="radio"]),textarea{font:inherit}
+  button,[role="button"],select,summary{min-height:44px}
+  input:not([type="checkbox"],[type="radio"]),textarea{min-height:44px}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .site-in{display:flex;align-items:center;gap:18px;padding:10px 0}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand-mark{
+    width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;line-height:0;
+    flex:none;
+  }
+  .brand-mark .px-acc{fill:var(--accent)}
+  .brand b{font-family:"Sora",sans-serif;font-size:16px;letter-spacing:.01em;display:block;line-height:1.1}
+  .brand span{font-size:12px;color:var(--muted);display:block;line-height:1.2}
+  nav.main{margin-left:auto;display:flex;gap:4px;align-items:center}
+  nav.main a{
+    color:var(--muted);text-decoration:none;font-weight:600;font-size:14.5px;
+    padding:10px 12px;border-radius:9px;min-height:44px;display:inline-flex;align-items:center;
+  }
+  nav.main a:hover{color:var(--ink);background:var(--surface-2)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    border:1px solid transparent;border-radius:11px;padding:11px 20px;
+    font-weight:800;font-size:15.5px;text-decoration:none;cursor:pointer;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+    min-height:48px;text-align:center;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn-wa{background:var(--wa);color:var(--wa-ink)}
+  .btn-ink{background:var(--ink);color:var(--bg)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .btn-small{padding:8px 16px;min-height:44px;font-size:14.5px}
+  nav.main a.btn-wa{color:var(--wa-ink)}
+  nav.main a.btn-wa:hover{color:var(--wa-ink)}
+  @media (max-width:760px){ nav.main a:not(.btn){display:none} }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--bg-soft)}
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.16}
+  @media (prefers-color-scheme: dark){ .hero-bg img{opacity:.12} }
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--bg) 96%)}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;padding:52px 0 64px;align-items:center}
+  @media (max-width:900px){ .hero-in{grid-template-columns:1fr;padding:36px 0 48px} }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;background:var(--gold-soft);color:var(--gold);
+    font-weight:800;font-size:13.5px;padding:7px 14px;border-radius:999px;margin-bottom:18px;
+  }
+  .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  .hero h1{font-size:clamp(32px,5.2vw,50px);font-weight:800;letter-spacing:-.015em}
+  .hero h1 em{font-style:normal;color:var(--accent-ink)}
+  .hero .lede{margin-top:16px;font-size:18.5px;color:var(--muted);max-width:34em}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .hero-points{margin-top:26px;display:grid;gap:9px;color:var(--muted);font-weight:600;font-size:15.5px}
+  .hero-points li{list-style:none;display:flex;gap:10px;align-items:flex-start}
+  .hero-points ul{margin:0;padding:0}
+  .check{color:var(--accent-ink);flex:none;margin-top:1px}
+  .hero-note{margin-top:16px;font-size:14px;color:var(--faint)}
+
+  /* ---------- Phone / card ---------- */
+  .phone-col{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .phone{
+    width:min(350px,92vw);background:var(--phone-bg);border-radius:42px;padding:11px;
+    box-shadow:var(--shadow);flex:none;
+  }
+  .phone-screen{background:var(--surface);border-radius:32px;overflow:hidden;min-height:560px;display:flex;flex-direction:column}
+  .phone-bar{display:flex;justify-content:center;padding:9px 0 3px}
+  .phone-bar i{width:86px;height:5px;border-radius:99px;background:var(--line);display:block}
+  .card-cover{position:relative;height:148px;flex:none}
+  .card-cover img{width:100%;height:100%;object-fit:cover}
+  .card-tag{
+    position:absolute;top:12px;left:12px;background:rgba(4,12,20,.78);color:#eaf7ff;
+    font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;letter-spacing:.02em;
+  }
+  .card-body{padding:0 20px 22px;display:flex;flex-direction:column;flex:1}
+  .avatar{
+    width:78px;height:78px;border-radius:50%;margin-top:-39px;position:relative;z-index:2;
+    background:var(--ink);color:var(--bg);display:grid;place-items:center;
+    font-family:"Sora",sans-serif;font-weight:800;font-size:25px;border:4px solid var(--surface);
+  }
+  .avatar.photo-hint{background:var(--surface-2);color:var(--faint);border:4px dashed var(--line);font-size:11px;text-align:center;padding:6px;line-height:1.25;font-family:"Manrope",sans-serif;font-weight:700}
+  .card-name{font-size:23px;font-weight:700;margin-top:10px}
+  .card-role{color:var(--accent-ink);font-weight:700;font-size:15px;margin-top:2px}
+  .card-desc{color:var(--muted);font-size:14.5px;margin-top:8px}
+  .card-wa{
+    margin-top:16px;background:var(--wa);color:var(--wa-ink);border:none;width:100%;
+    border-radius:12px;padding:13px;font-weight:800;font-size:16px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;
+  }
+  .card-sec{font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin:20px 0 8px}
+  .svc{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .svc:last-child{border-bottom:none}
+  .svc b{font-weight:700}
+  .svc span{color:var(--accent-ink);font-weight:800;white-space:nowrap}
+  .meta-rows{margin-top:auto;padding-top:16px;display:grid;gap:7px;color:var(--muted);font-size:14px;font-weight:600}
+  .meta-rows div{display:flex;gap:9px;align-items:center}
+  .card-foot{margin-top:14px;text-align:center;font-size:12px;color:var(--faint)}
+  .card-foot b{color:var(--muted)}
+
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .tab{
+    border:1px solid var(--line);background:var(--surface);color:var(--muted);
+    border-radius:999px;padding:9px 16px;font-weight:800;font-size:14px;cursor:pointer;min-height:44px;
+  }
+  .tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .tab-hint{font-size:13.5px;color:var(--faint);text-align:center;max-width:340px}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:64px 0}
+  section.block.alt{background:var(--bg-soft)}
+  .sec-head{max-width:680px;margin-bottom:34px}
+  .sec-head h2{font-size:clamp(26px,3.6vw,36px);font-weight:800;letter-spacing:-.01em}
+  .sec-head p{margin-top:10px;color:var(--muted);font-size:17px}
+
+  .who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media (max-width:900px){ .who-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:480px){ .who-grid{grid-template-columns:1fr} }
+  .who{
+    text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;cursor:pointer;color:var(--ink);width:100%;
+  }
+  .who:hover{border-color:var(--accent)}
+  .who .ic{width:42px;height:42px;border-radius:11px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;margin-bottom:12px}
+  .who b{font-family:"Sora",sans-serif;font-size:16.5px;display:block}
+  .who span{color:var(--muted);font-size:14.5px;display:block;margin-top:5px}
+  .who .go{color:var(--accent-ink);font-weight:800;font-size:13.5px;margin-top:12px;display:block}
+
+  /* ---------- Builder ---------- */
+  .builder{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  @media (max-width:900px){ .builder{grid-template-columns:1fr} .builder .phone-col{order:-1} }
+  form.card-form{display:grid;gap:16px}
+  .field label{display:block;font-weight:800;font-size:14.5px;margin-bottom:7px}
+  .field label small{color:var(--faint);font-weight:600}
+  .field input[type="text"],.field select,.field textarea{
+    width:100%;background:var(--surface);border:1px solid var(--line);border-radius:11px;
+    padding:11px 14px;color:var(--ink);
+  }
+  .field textarea{resize:vertical;min-height:74px}
+  .field input::placeholder,.field textarea::placeholder{color:var(--faint)}
+  .plan-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:480px){ .plan-pick{grid-template-columns:1fr} }
+  .plan-pick label{
+    border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:13px 15px;
+    cursor:pointer;display:flex;gap:11px;align-items:flex-start;min-height:44px;margin:0;
+  }
+  .plan-pick input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent)}
+  .plan-pick b{display:block;font-size:15.5px}
+  .plan-pick span{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+  .plan-pick label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+  .form-note{font-size:14px;color:var(--muted)}
+  .send-wa{width:100%;font-size:17px;padding:15px}
+
+  /* ---------- Plans ---------- */
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+  @media (max-width:760px){ .plans{grid-template-columns:1fr} }
+  .plan{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column}
+  .plan.featured{border:2px solid var(--accent)}
+  .plan .p-tag{font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .plan.featured .p-tag{color:var(--accent-ink)}
+  .plan h3{font-size:21px;margin-top:8px}
+  .price{font-family:"Sora",sans-serif;font-size:42px;font-weight:800;margin-top:10px;line-height:1}
+  .price small{font-size:15px;color:var(--muted);font-family:"Manrope",sans-serif;font-weight:700}
+  .plan ul{margin:20px 0 24px;padding:0;display:grid;gap:10px}
+  .plan li{list-style:none;display:flex;gap:10px;color:var(--muted);font-weight:600;font-size:15.5px}
+  .plan li b{color:var(--ink)}
+  .plan .btn{margin-top:auto}
+  .plans-note{margin-top:16px;color:var(--faint);font-size:14px}
+
+  /* ---------- Steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:820px){ .steps{grid-template-columns:1fr} }
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .step .num{
+    width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--bg);
+    font-family:"Sora",sans-serif;font-weight:800;display:grid;place-items:center;margin-bottom:14px;
+  }
+  .step h3{font-size:18px}
+  .step p{color:var(--muted);margin-top:8px;font-size:15.5px}
+  .step p b{color:var(--ink)}
+
+  /* ---------- Messages ---------- */
+  .msgs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:820px){ .msgs{grid-template-columns:1fr} }
+  .msg{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column}
+  .msg .m-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .msg .m-head h3{font-size:18px}
+  .msg .m-sub{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+  .bubble{
+    background:var(--surface-2);border:1px solid var(--line);border-radius:14px;border-top-left-radius:4px;
+    padding:16px 18px;font-size:16px;line-height:1.6;
+  }
+  .bubble .slot{color:var(--accent-ink);font-weight:800}
+  .msg .m-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;color:var(--faint);font-size:13.5px;font-weight:600}
+  .copy-btn{
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;
+    padding:9px 16px;font-weight:800;font-size:14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center;min-height:44px;
+  }
+  .copy-btn:hover{border-color:var(--accent)}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:760px}
+  details{border-bottom:1px solid var(--line)}
+  details summary{
+    cursor:pointer;font-weight:800;font-size:16.5px;padding:16px 4px;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";font-size:22px;color:var(--accent-ink);font-weight:700}
+  details[open ] summary::after{content:"–"}
+  details p{color:var(--muted);padding:0 4px 18px;max-width:44em}
+
+  /* ---------- Final CTA / footer ---------- */
+  .final{background:var(--ink);color:var(--bg);border-radius:22px;padding:44px 34px;text-align:center}
+  .final h2{font-size:clamp(25px,3.4vw,34px)}
+  .final p{opacity:.78;margin:12px auto 0;max-width:36em}
+  .final .btn{margin-top:26px}
+  footer.site{padding:30px 0 40px;color:var(--faint);font-size:14px}
+  footer.site .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed;left:50%;bottom:22px;transform:translate(-50%,80px);z-index:99;
+    background:var(--ink);color:var(--bg);font-weight:700;font-size:15px;
+    padding:13px 20px;border-radius:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;
+    transition:transform .25s ease,opacity .25s ease;max-width:92vw;text-align:center;
+  }
+  .toast.show{transform:translate(-50%,0);opacity:1}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-in">
+    <a class="brand" href="#top" aria-label="Black Pixel — Tarjeta Digital">
+      <span class="brand-mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><rect x="0" y="0" width="5" height="5" rx="1.2" fill="currentColor"/><rect x="6.5" y="0" width="5" height="5" rx="1.2" fill="currentColor"/><rect x="13" y="0" width="5" height="5" rx="1.2" fill="currentColor" opacity=".45"/><rect x="0" y="6.5" width="5" height="5" rx="1.2" fill="currentColor" opacity=".45"/><rect x="6.5" y="6.5" width="5" height="5" rx="1.2" class="px-acc"/><rect x="13" y="6.5" width="5" height="5" rx="1.2" fill="currentColor"/><rect x="0" y="13" width="5" height="5" rx="1.2" fill="currentColor"/><rect x="6.5" y="13" width="5" height="5" rx="1.2" fill="currentColor" opacity=".45"/><rect x="13" y="13" width="5" height="5" rx="1.2" fill="currentColor"/></svg></span>
+      <span><b>Black Pixel</b><span>Tarjeta Digital · Todo México</span></span>
+    </a>
+    <nav class="main" aria-label="Secciones">
+      <a href="#ejemplo">Ejemplo</a>
+      <a href="#planes">Planes</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-wa btn-small" href="#pedir">Quiero la mía</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO + EJEMPLO ================= -->
+  <div class="hero" id="ejemplo">
+    <div class="hero-bg" aria-hidden="true"><img src="assets/images/tarjeta/tarjeta-1.jpg" decoding="async" alt="" /></div>
+    <div class="wrap hero-in">
+      <div>
+        <span class="pill">Gratis para las primeras 20 personas</span>
+        <h1>Tu tarjeta digital: lo que haces, en <em>un solo enlace</em></h1>
+        <p class="lede">Una mini-página con tu foto, tu nombre, lo que haces o vendes, tus servicios con precios y un botón grande para que te escriban por WhatsApp. Se comparte por WhatsApp, en tus estados y en tus redes — y quien la abre no tiene que descargar nada.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-wa" href="#pedir">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.7 2.6.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
+            Quiero mi tarjeta gratis
+          </a>
+          <a class="btn btn-ghost" href="#planes">Ver Básica y Premium</a>
+        </div>
+        <ul class="hero-points">
+          <li><svg class="check" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Sirve igual para un negocio, un oficio, ventas por catálogo o tu perfil personal.</li>
+          <li><svg class="check" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Lista en 24 a 48 horas con solo tu nombre, una foto y qué haces o vendes.</li>
+          <li><svg class="check" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Sin rentas mensuales: la Básica es gratis hoy, y la Premium es un solo pago.</li>
+        </ul>
+        <p class="hero-note">Este es un ejemplo de cómo queda la tarjeta. Toca los perfiles y mira cómo se adapta a cada persona.</p>
+      </div>
+
+      <div class="phone-col">
+        <div class="tabs" role="tablist" aria-label="Perfiles de ejemplo">
+          <button class="tab" role="tab" data-profile="comida" aria-selected="true">Comida</button>
+          <button class="tab" role="tab" data-profile="oficio" aria-selected="false">Oficio</button>
+          <button class="tab" role="tab" data-profile="ventas" aria-selected="false">Ventas</button>
+          <button class="tab" role="tab" data-profile="estudiante" aria-selected="false">Estudiante</button>
+        </div>
+        <div class="phone" aria-live="polite">
+          <div class="phone-screen">
+            <div class="phone-bar" aria-hidden="true"><i></i></div>
+            <div class="card-cover">
+              <img id="ex-img" src="assets/images/tarjeta/tarjeta-2.jpg" decoding="async" alt="Puesto de antojitos y tacos en servicio" />
+              <span class="card-tag" id="ex-tag">Negocio local</span>
+            </div>
+            <div class="card-body">
+              <div class="avatar" id="ex-avatar">MT</div>
+              <h3 class="card-name" id="ex-name">Mario Torres</h3>
+              <p class="card-role" id="ex-role">Antojitos y comida casera</p>
+              <p class="card-desc" id="ex-desc">Comida casera hecha al momento. Pide por WhatsApp y recoge, o te lo llevamos cerca del centro.</p>
+              <button class="card-wa" type="button" data-demo>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.7 2.6.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
+                Escríbeme por WhatsApp
+              </button>
+              <p class="card-sec">Servicios y precios</p>
+              <div id="ex-services"></div>
+              <div class="meta-rows">
+                <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="ex-hours">Lun a Sáb · 9:00 a 18:00</span></div>
+                <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span id="ex-zone">Envíos en toda la ciudad</span></div>
+              </div>
+              <p class="card-foot">Tarjeta Digital hecha por <b>Black Pixel</b></p>
+            </div>
+          </div>
+        </div>
+        <p class="tab-hint">Perfiles de ejemplo. La tuya lleva tu foto, tu nombre y tus precios.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PARA QUIÉN ================= -->
+  <section class="block" style="padding-top:52px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Pensada para cualquier persona, no solo para empresas</h2>
+        <p>No necesitas tener un negocio formal, estés donde estés en México. Si vendes algo, ofreces un servicio o quieres que te encuentren para trabajar, la tarjeta se adapta a ti. Toca un perfil y míralo en el ejemplo de arriba.</p>
+      </div>
+      <div class="who-grid">
+        <button class="who" type="button" data-profile="comida">
+          <span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18M5 11a7 7 0 0 1 14 0M12 4v1M4 15h16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2Z"/></svg></span>
+          <b>Negocio local</b>
+          <span>Comida, tienda, taller, puesto de mercado. Tus clientes te escriben directo, sin buscarte entre publicaciones de Facebook.</span>
+          <span class="go">Ver ejemplo →</span>
+        </button>
+        <button class="who" type="button" data-profile="oficio">
+          <span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7Z"/></svg></span>
+          <b>Oficio o servicio</b>
+          <span>Plomería, electricidad, albañilería, belleza, reparaciones. Un enlace profesional para mandar cuando te piden tu número.</span>
+          <span class="go">Ver ejemplo →</span>
+        </button>
+        <button class="who" type="button" data-profile="ventas">
+          <span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h15l-1.5 9h-12L5 3H2"/><circle cx="9" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></span>
+          <b>Ventas desde casa</b>
+          <span>Catálogo, comida por encargo, productos hechos por ti. Tu oferta completa en un enlace para tus estados y grupos.</span>
+          <span class="go">Ver ejemplo →</span>
+        </button>
+        <button class="who" type="button" data-profile="estudiante">
+          <span class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9 12 4 2 9l10 5 10-5ZM6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg></span>
+          <b>Estudiante o perfil personal</b>
+          <span>Tu experiencia, tus trabajos y tu contacto en un enlace listo para compartir cuando buscas práctica o empleo.</span>
+          <span class="go">Ver ejemplo →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PEDIR / BUILDER ================= -->
+  <section class="block alt" id="pedir">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Pide la tuya: así va a quedar</h2>
+        <p>Escribe tus datos y mira tu tarjeta en vivo. Cuando te guste, un solo botón abre WhatsApp con todo listo para enviárnoslo: <b>tu nombre completo, una foto y qué haces o vendes</b>. La foto la mandas en el mismo chat.</p>
+      </div>
+      <div class="builder">
+        <form class="card-form" id="builder-form">
+          <div class="field">
+            <label for="f-name">Tu nombre completo</label>
+            <input type="text" id="f-name" placeholder="Ej. Mario Torres" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="f-type">¿Qué tipo de tarjeta es?</label>
+            <select id="f-type">
+              <option value="Negocio local">Negocio local (comida, tienda, tours…)</option>
+              <option value="Oficio / servicios">Oficio o servicio a domicilio</option>
+              <option value="Ventas por catálogo">Vendo desde casa / por catálogo</option>
+              <option value="Perfil personal">Estudiante o perfil personal</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-role">¿Qué haces o vendes?</label>
+            <input type="text" id="f-role" placeholder="Ej. Antojitos y comida casera" />
+          </div>
+          <div class="field">
+            <label for="f-desc">Cuéntalo en una frase <small>(opcional)</small></label>
+            <input type="text" id="f-desc" placeholder="Ej. Comida casera hecha al momento, pide y recoge" />
+          </div>
+          <div class="field">
+            <label for="f-services">Tus servicios o productos, uno por línea <small>(opcional — puedes poner precio después de una coma)</small></label>
+            <textarea id="f-services" placeholder="Orden de tacos (5), $60&#10;Tortas y sopes, $45&#10;Agua fresca 1 L, $25"></textarea>
+          </div>
+          <div class="field">
+            <label for="f-hours">Tu horario <small>(opcional)</small></label>
+            <input type="text" id="f-hours" placeholder="Ej. Lun a Sáb · 9:00 a 18:00" />
+          </div>
+          <div class="field">
+            <label for="f-zone">Tu zona <small>(opcional)</small></label>
+            <input type="text" id="f-zone" placeholder="Ej. Centro, tu ciudad" />
+          </div>
+          <div class="field">
+            <label>¿Cuál quieres?</label>
+            <div class="plan-pick">
+              <label>
+                <input type="radio" name="plan" value="Básica (gratis, primeras 20 personas)" checked />
+                <span><b>Básica — Gratis</b><span>Para las primeras 20 personas de esta promoción.</span></span>
+              </label>
+              <label>
+                <input type="radio" name="plan" value="Premium ($578 MXN)" />
+                <span><b>Premium — $578 MXN</b><span>Con perfil de Google, mapa, horarios y catálogo.</span></span>
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-wa send-wa" type="submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.7 2.6.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
+            Enviar mis datos por WhatsApp
+          </button>
+          <p class="form-note">Al enviar se abre WhatsApp con tus datos ya escritos. Ahí mismo adjuntas tu foto y listo: te la entregamos en 24 a 48 horas.</p>
+        </form>
+
+        <div class="phone-col">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-bar" aria-hidden="true"><i></i></div>
+              <div class="card-cover">
+                <img src="assets/images/tarjeta/tarjeta-1.jpg" decoding="async" loading="lazy" alt="" />
+                <span class="card-tag" id="pv-tag">Negocio local</span>
+              </div>
+              <div class="card-body">
+                <div class="avatar photo-hint" id="pv-avatar">Tu foto aquí</div>
+                <h3 class="card-name" id="pv-name">Tu nombre</h3>
+                <p class="card-role" id="pv-role">Lo que haces o vendes</p>
+                <p class="card-desc" id="pv-desc">Aquí va tu frase: qué ofreces y por qué contigo.</p>
+                <button class="card-wa" type="button" data-demo>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.7 2.6.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg>
+                  Escríbeme por WhatsApp
+                </button>
+                <p class="card-sec">Servicios y precios</p>
+                <div id="pv-services">
+                  <div class="svc"><b>Tu servicio o producto</b><span>Precio</span></div>
+                  <div class="svc"><b>Otro servicio</b><span>Precio</span></div>
+                </div>
+                <div class="meta-rows">
+                  <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="pv-hours">Tu horario</span></div>
+                  <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span id="pv-zone">Tu zona</span></div>
+                </div>
+                <p class="card-foot">Tarjeta Digital hecha por <b>Black Pixel</b></p>
+              </div>
+            </div>
+          </div>
+          <p class="tab-hint">Vista previa en vivo. Tu tarjeta final lleva tu foto y tu enlace propio para compartir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLANES ================= -->
+  <section class="block" id="planes">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Básica gratis para 20 personas. Premium cuando quieras crecer.</h2>
+        <p>Las primeras 20 personas que pidan su tarjeta en esta promoción se llevan la Básica sin pagar nada. La Premium es un solo pago de $578 MXN, sin rentas mensuales.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <span class="p-tag">Para las primeras 20</span>
+          <h3>Tarjeta Básica</h3>
+          <p class="price">$0 <small>gratis · lanzamiento</small></p>
+          <ul>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Tu foto y tu nombre</b> al frente de tu tarjeta</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Lo que haces o vendes</b>, explicado en una frase</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Botón de WhatsApp</b> para que te escriban en un toque</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Tus redes sociales</b> enlazadas</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Servicios con precios</b> y tu zona de trabajo</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Un enlace propio</b> para compartir donde quieras</span></li>
+          </ul>
+          <a class="btn btn-ink" href="#pedir">Apartar mi lugar gratis</a>
+        </article>
+        <article class="plan featured">
+          <span class="p-tag">La completa</span>
+          <h3>Tarjeta Premium</h3>
+          <p class="price">$578 <small>MXN · pago único</small></p>
+          <ul>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Todo lo de la Básica</b>, más:</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Perfil de Google</b> — que te encuentren al buscar en Google y Maps</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Mapa con tu ubicación</b> dentro de la tarjeta</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Horarios completos</b> visibles para tus clientes</span></li>
+            <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Catálogo</b> con más productos, fotos y precios</span></li>
+          </ul>
+          <a class="btn btn-wa" href="#pedir" id="premium-cta">Quiero la Premium</a>
+        </article>
+      </div>
+      <p class="plans-note">¿Ya tienes tu Básica gratis? Puedes subir a Premium cuando quieras, con los mismos datos.</p>
+    </div>
+  </section>
+
+  <!-- ================= CÓMO FUNCIONA ================= -->
+  <section class="block alt" id="como">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Así de simple: tres pasos</h2>
+        <p>Sin registros raros, sin descargar aplicaciones y sin pagar nada por adelantado. Tú pides tu tarjeta y nosotros la armamos.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Pide tu tarjeta</h3>
+          <p>Nos escribes por <b>WhatsApp</b> desde esta página o desde el anuncio y apartas tu lugar. Si eres de las <b>primeras 20 personas</b>, tu Tarjeta Básica es gratis.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Manda tus datos</h3>
+          <p>Nos mandas tres cosas por WhatsApp: <b>tu nombre completo, una foto y qué haces o vendes</b>. Puedes usar el formulario de esta página y se manda todo de una vez.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Recíbela y compártela</h3>
+          <p>En <b>24 a 48 horas</b> te mandamos tu enlace. Lo pegas en tus estados de WhatsApp, en Facebook o lo reenvías a tus clientes — y ellos te escriben con un toque.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="block alt" id="preguntas">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>¿De verdad la Básica es gratis?</summary>
+          <p>Sí, para las primeras 20 personas que pidan su tarjeta en esta promoción. Es la misma tarjeta completa de la Básica: foto, nombre, lo que haces o vendes, botón de WhatsApp, redes, servicios con precios y tu enlace. Sin letra chica y sin renta mensual.</p>
+        </details>
+        <details>
+          <summary>¿Qué necesito para que me la armen?</summary>
+          <p>Solo tres cosas: tu nombre completo, una foto tuya o de tu negocio, y decirnos qué haces o vendes. Si quieres, agregas tus servicios con precios, tu horario y tu zona — el formulario de esta página te guía paso a paso.</p>
+        </details>
+        <details>
+          <summary>No tengo negocio, ¿me sirve?</summary>
+          <p>Sí. Si ofreces un oficio, vendes por catálogo o desde casa, o eres estudiante buscando práctica o trabajo, la tarjeta funciona como tu presentación: quién eres, qué sabes hacer y cómo contactarte, en un solo enlace.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto tarda y cómo la recibo?</summary>
+          <p>De 24 a 48 horas después de que nos mandes tus datos. Te la enviamos por WhatsApp como un enlace, listo para compartir en tus estados, grupos y redes.</p>
+        </details>
+        <details>
+          <summary>¿Qué incluye la Premium de $578?</summary>
+          <p>Todo lo de la Básica, más tu perfil de Google (para aparecer en Google y Maps), el mapa con tu ubicación dentro de la tarjeta, tus horarios completos y un catálogo con más productos, fotos y precios. Es pago único, no mensualidad.</p>
+        </details>
+        <details>
+          <summary>¿Atienden en mi ciudad?</summary>
+          <p>Sí. La tarjeta es 100% digital y funciona en cualquier parte de México: nos mandas tus datos por WhatsApp y te la entregamos por el mismo medio, sin importar en qué ciudad o estado estés.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL ================= -->
+  <section class="block">
+    <div class="wrap">
+      <div class="final">
+        <h2>Las primeras 20 tarjetas no cuestan nada.</h2>
+        <p>Mándanos tus datos desde aquí y apartamos tu lugar: solo necesitas tu nombre, una foto y qué haces o vendes.</p>
+        <a class="btn btn-wa" href="#pedir">Pedir mi Tarjeta Digital</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span><b>Black Pixel</b> · Tarjeta Digital · Para todo México</span>
+    <span>Hecha por Noé Sánchez Carballo — Black Pixel Mkt</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+  var WA_NUMBER = "529842044965";
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById("toast"), toastTimer = null;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 3200);
+  }
+
+  /* ---------- Example profiles ---------- */
+  var profiles = {
+    comida: {
+      tag: "Negocio local",
+      img: "assets/images/tarjeta/tarjeta-2.jpg",
+      imgAlt: "Puesto de antojitos y tacos en servicio",
+      initials: "MT",
+      name: "Mario Torres",
+      role: "Antojitos y comida casera",
+      desc: "Comida casera hecha al momento. Pide por WhatsApp y recoge, o pide entrega en tu zona.",
+      services: [
+        ["Orden de tacos (5)", "$60"],
+        ["Tortas y sopes", "$45"],
+        ["Agua fresca de 1 litro", "$25"],
+        ["Pedidos para eventos", "Cotizar"]
+      ],
+      hours: "Lun a Sáb · 9:00 a 18:00",
+      zone: "Envíos en toda la ciudad"
+    },
+    oficio: {
+      tag: "Oficio / servicios",
+      img: "assets/images/tarjeta/tarjeta-3.jpg",
+      imgAlt: "Plomero reparando la tubería de un lavabo con una llave",
+      initials: "RC",
+      name: "Roberto Cruz",
+      role: "Plomería y electricidad a domicilio",
+      desc: "Trabajo garantizado y presupuesto sin compromiso antes de empezar. Atiendo urgencias el mismo día.",
+      services: [
+        ["Destape y reparación de fugas", "desde $350"],
+        ["Instalación de boiler", "desde $600"],
+        ["Contactos y centro de carga", "desde $450"],
+        ["Urgencias 24 horas", "Cotizar"]
+      ],
+      hours: "Lun a Dom · 8:00 a 20:00",
+      zone: "Servicio a domicilio"
+    },
+    ventas: {
+      tag: "Ventas por catálogo",
+      img: "assets/images/tarjeta/tarjeta-4.jpg",
+      imgAlt: "Mujer vendiendo desde casa, atendiendo un pedido con cajas y laptop",
+      initials: "LP",
+      name: "Laura Pérez",
+      role: "Venta por catálogo · Belleza y hogar",
+      desc: "Levanto pedido cada semana y entrego a domicilio en tu zona. Pide el catálogo completo por WhatsApp.",
+      services: [
+        ["Maquillaje y cuidado de la piel", "Ver catálogo"],
+        ["Artículos para el hogar", "Ver catálogo"],
+        ["Entrega a domicilio en tu zona", "Sin costo"],
+        ["Apartado con anticipo", "50%"]
+      ],
+      hours: "Pedidos: Lun a Vie",
+      zone: "A domicilio en tu zona"
+    },
+    estudiante: {
+      tag: "Estudiante",
+      img: "assets/images/tarjeta/tarjeta-5.jpg",
+      imgAlt: "Estudiante sonriendo mientras trabaja en su laptop",
+      initials: "DH",
+      name: "Diego Hernández",
+      role: "Estudiante · Apoyo escolar y diseño",
+      desc: "Estudio y trabajo por las tardes. Te ayudo con tareas, presentaciones y diseños para tu negocio.",
+      services: [
+        ["Presentaciones y tareas", "desde $80"],
+        ["Clases de regularización", "$100 / hora"],
+        ["Diseños para redes sociales", "desde $120"],
+        ["Currículum en un enlace", "desde $100"]
+      ],
+      hours: "Tardes y fines de semana",
+      zone: "En tu ciudad · también en línea"
+    }
+  };
+
+  var exImg = document.getElementById("ex-img"),
+      exTag = document.getElementById("ex-tag"),
+      exAvatar = document.getElementById("ex-avatar"),
+      exName = document.getElementById("ex-name"),
+      exRole = document.getElementById("ex-role"),
+      exDesc = document.getElementById("ex-desc"),
+      exServices = document.getElementById("ex-services"),
+      exHours = document.getElementById("ex-hours"),
+      exZone = document.getElementById("ex-zone");
+
+  function setProfile(key){
+    var p = profiles[key];
+    if(!p) return;
+    exImg.src = p.img; exImg.alt = p.imgAlt;
+    exTag.textContent = p.tag;
+    exAvatar.textContent = p.initials;
+    exName.textContent = p.name;
+    exRole.textContent = p.role;
+    exDesc.textContent = p.desc;
+    exHours.textContent = p.hours;
+    exZone.textContent = p.zone;
+    exServices.innerHTML = "";
+    p.services.forEach(function(s){
+      var row = document.createElement("div");
+      row.className = "svc";
+      var b = document.createElement("b"); b.textContent = s[0];
+      var sp = document.createElement("span"); sp.textContent = s[1];
+      row.appendChild(b); row.appendChild(sp);
+      exServices.appendChild(row);
+    });
+    var tabs = document.querySelectorAll(".tab");
+    tabs.forEach(function(t){ t.setAttribute("aria-selected", t.getAttribute("data-profile") === key ? "true" : "false"); });
+  }
+
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.addEventListener("click", function(){ setProfile(t.getAttribute("data-profile")); });
+  });
+  document.querySelectorAll(".who").forEach(function(w){
+    w.addEventListener("click", function(){
+      setProfile(w.getAttribute("data-profile"));
+      document.getElementById("ejemplo").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+  setProfile("comida");
+
+  /* Demo buttons inside the sample cards */
+  document.querySelectorAll("[data-demo]").forEach(function(b){
+    b.addEventListener("click", function(){
+      showToast("Esto es un ejemplo: en tu tarjeta, este botón abre tu WhatsApp.");
+    });
+  });
+
+  /* ---------- Live preview builder ---------- */
+  var fName = document.getElementById("f-name"),
+      fType = document.getElementById("f-type"),
+      fRole = document.getElementById("f-role"),
+      fDesc = document.getElementById("f-desc"),
+      fServices = document.getElementById("f-services"),
+      fHours = document.getElementById("f-hours"),
+      fZone = document.getElementById("f-zone"),
+      pvTag = document.getElementById("pv-tag"),
+      pvAvatar = document.getElementById("pv-avatar"),
+      pvName = document.getElementById("pv-name"),
+      pvRole = document.getElementById("pv-role"),
+      pvDesc = document.getElementById("pv-desc"),
+      pvServices = document.getElementById("pv-services"),
+      pvHours = document.getElementById("pv-hours"),
+      pvZone = document.getElementById("pv-zone");
+
+  function initials(name){
+    var parts = name.trim().split(/\s+/).filter(Boolean);
+    if(!parts.length) return "";
+    if(parts.length === 1) return parts[0].slice(0,2).toUpperCase();
+    return (parts[0].charAt(0) + parts[parts.length-1].charAt(0)).toUpperCase();
+  }
+
+  function parseServices(text){
+    return text.split("\n").map(function(l){ return l.trim(); }).filter(Boolean).map(function(l){
+      var idx = l.lastIndexOf(",");
+      if(idx > 0){
+        return [l.slice(0, idx).trim(), l.slice(idx + 1).trim()];
+      }
+      return [l, ""];
+    });
+  }
+
+  function updatePreview(){
+    var name = fName.value.trim();
+    pvName.textContent = name || "Tu nombre";
+    pvRole.textContent = fRole.value.trim() || "Lo que haces o vendes";
+    pvDesc.textContent = fDesc.value.trim() || "Aquí va tu frase: qué ofreces y por qué contigo.";
+    pvTag.textContent = fType.value;
+    pvHours.textContent = fHours.value.trim() || "Tu horario";
+    pvZone.textContent = fZone.value.trim() || "Tu zona";
+    if(name){
+      pvAvatar.textContent = initials(name);
+      pvAvatar.classList.remove("photo-hint");
+      pvAvatar.style.background = "var(--ink)";
+      pvAvatar.style.color = "var(--bg)";
+    } else {
+      pvAvatar.textContent = "Tu foto aquí";
+      pvAvatar.classList.add("photo-hint");
+      pvAvatar.style.background = "";
+      pvAvatar.style.color = "";
+    }
+    var svcs = parseServices(fServices.value);
+    pvServices.innerHTML = "";
+    if(!svcs.length){
+      pvServices.innerHTML = '<div class="svc"><b>Tu servicio o producto</b><span>Precio</span></div><div class="svc"><b>Otro servicio</b><span>Precio</span></div>';
+    } else {
+      svcs.slice(0, 6).forEach(function(s){
+        var row = document.createElement("div");
+        row.className = "svc";
+        var b = document.createElement("b"); b.textContent = s[0];
+        var sp = document.createElement("span"); sp.textContent = s[1] || "—";
+        row.appendChild(b); row.appendChild(sp);
+        pvServices.appendChild(row);
+      });
+    }
+  }
+  [fName, fType, fRole, fDesc, fServices, fHours, fZone].forEach(function(el){
+    el.addEventListener("input", updatePreview);
+    el.addEventListener("change", updatePreview);
+  });
+  updatePreview();
+
+  /* Premium CTA preselects the Premium plan */
+  document.getElementById("premium-cta").addEventListener("click", function(){
+    var radio = document.querySelector('input[name="plan"][value^="Premium"]');
+    if(radio) radio.checked = true;
+    if(window.fbq) fbq("trackCustom", "PremiumClick");
+  });
+
+  /* ---------- Submit -> WhatsApp ---------- */
+  document.getElementById("builder-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var name = fName.value.trim();
+    var role = fRole.value.trim();
+    if(!name || !role){
+      showToast("Faltan dos datos: tu nombre completo y qué haces o vendes.");
+      (!name ? fName : fRole).focus();
+      return;
+    }
+    var plan = document.querySelector('input[name="plan"]:checked').value;
+    var lines = [
+      "Hola Black Pixel, quiero mi Tarjeta Digital.",
+      "",
+      "Nombre completo: " + name,
+      "Qué hago / vendo: " + role,
+      "Tipo de tarjeta: " + fType.value,
+      "Plan: " + plan
+    ];
+    if(fDesc.value.trim()) lines.push("Mi frase: " + fDesc.value.trim());
+    var svcs = parseServices(fServices.value);
+    if(svcs.length){
+      lines.push("Servicios:");
+      svcs.forEach(function(s){ lines.push("- " + s[0] + (s[1] ? ": " + s[1] : "")); });
+    }
+    if(fHours.value.trim()) lines.push("Horario: " + fHours.value.trim());
+    if(fZone.value.trim()) lines.push("Zona: " + fZone.value.trim());
+    lines.push("");
+    lines.push("Te mando mi foto por aquí.");
+    var url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
+    if(window.fbq){
+      fbq("track", "Lead", {
+        content_name: "Tarjeta Digital",
+        content_category: plan,
+        value: plan.indexOf("Premium") === 0 ? 578 : 0,
+        currency: "MXN"
+      });
+    }
+    window.open(url, "_blank", "noopener");
+    showToast("Se abrió WhatsApp con tus datos listos. Solo adjunta tu foto y envía.");
+  });
+
+})();
+</script>
+</body>
+</html>
