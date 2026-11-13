@@ -885,6 +885,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            // Consentimiento de datos (LFPDPPP)
+            const consent = document.getElementById('privacidad');
+            if (consent && !consent.checked) {
+                setFormStatus('Acepta el aviso de privacidad para enviar tu mensaje.', 'error');
+                consent.focus();
+                return;
+            }
+
             sending = true;
             submitBtn.textContent = 'ENVIANDO...';
             submitBtn.disabled = true;

@@ -17,7 +17,7 @@ Este proyecto muestra una landing page principal, un blog estático y una págin
 ## Stack
 
 - HTML5
-- Tailwind CSS via CDN
+- Tailwind CSS compilado (3.4, sin CDN)
 - JavaScript vanilla
 - AOS para animaciones
 - Supabase para el formulario de contacto
@@ -45,11 +45,14 @@ blackpixelwebpage/
 │   ├── tarjeta-digital.html # landing para anuncios (noindex)
 │   ├── main.js
 │   ├── style.css
+│   ├── tailwind.css         # generado: no editar a mano
 │   ├── tailwind-fallback.css
 │   ├── robots.txt
 │   └── assets/
 │       ├── meta-pixel.js    # código base del píxel (ID en un solo lugar)
 │       └── images/
+├── tailwind.config.js       # qué archivos escanea Tailwind
+├── input.css                # directivas base de Tailwind
 ├── vercel.json
 ├── wrangler.jsonc
 ├── netlify.toml          # publish = "bin"
@@ -66,6 +69,23 @@ python -m http.server 8000
 ```
 
 3. Abre `http://localhost:8000`.
+
+## Tailwind CSS
+
+El sitio usa un CSS compilado (`bin/tailwind.css`, ~28 KB), no el CDN.
+
+Si agregas clases nuevas en el HTML o en `main.js`, hay que regenerarlo:
+
+```bash
+npm install --no-save tailwindcss@3.4.17
+npx tailwindcss -c tailwind.config.js -i input.css -o bin/tailwind.css --minify
+```
+
+`tailwind.config.js` escanea `index.html`, `blog.html`, `post-detail.html`,
+`proyecto.html` y `main.js`. Si agregas una página nueva que use Tailwind,
+añádela ahí o sus clases no se generarán.
+
+`tarjeta-digital.html` no usa Tailwind: tiene su propio CSS embebido.
 
 ## Dominio y SEO
 

@@ -20,8 +20,8 @@
     <meta name="twitter:title" content="Black Pixel - Diseño Web, Apps y Marketing Digital">
     <meta name="twitter:description" content="Agencia digital con enfoque visual fuerte, experiencia responsiva y servicios de diseño web, apps y marketing.">
     <meta name="twitter:image" content="https://blackpixelmkt.netlify.app/assets/images/blackpixel-share.jpg">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS compilado (no CDN). Regenerar con: npx tailwindcss -c tailwind.config.js -i input.css -o bin/tailwind.css --minify -->
+    <link rel="stylesheet" href="tailwind.css">
     <!-- CSS de respaldo crítico -->
     <link rel="stylesheet" href="tailwind-fallback.css">
     <link rel="stylesheet" href="style.css">
@@ -473,6 +473,15 @@
                     <div class="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
                         <label for="website">No rellenar este campo</label>
                         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="privacidad" name="privacidad" required
+                            class="mt-1 h-4 w-4 shrink-0 accent-cyan-500">
+                        <div class="text-[11px] leading-relaxed text-gray-500">
+                            <label for="privacidad">Acepto que mis datos se usen para que me contacten.</label>
+                            <button type="button" onclick="openModal('modal-privacidad')" class="underline underline-offset-2 hover:text-cyan-600">Ver aviso de privacidad</button>
+                        </div>
                     </div>
 
                     <button type="submit" id="submitBtn" class="w-full bg-black text-white font-black uppercase py-5 tracking-widest hover:bg-cyan-400 transition-colors">
