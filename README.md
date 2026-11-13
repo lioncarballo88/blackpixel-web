@@ -49,7 +49,6 @@ blackpixelwebpage/
 │   ├── tailwind-fallback.css
 │   ├── robots.txt
 │   └── assets/
-│       ├── meta-pixel.js    # código base del píxel (ID en un solo lugar)
 │       └── images/
 ├── tailwind.config.js       # qué archivos escanea Tailwind
 ├── input.css                # directivas base de Tailwind
@@ -110,9 +109,11 @@ https://blackpixelmkt.netlify.app/tarjeta-digital
 - Lleva `noindex` para no competir con el sitio principal en Google.
 - El formulario arma el mensaje y abre WhatsApp con los datos ya escritos
   (nombre, tipo de tarjeta, servicios y plan elegido).
-- Píxel de Meta (`assets/meta-pixel.js`, ID `29146698098325912`):
-  `PageView` en todas las páginas, `Lead` al enviar el formulario de la landing
-  o el de contacto del sitio, y `PremiumClick` en la CTA de la tarjeta Premium.
+- Píxel de Meta: código base **inline en el `<head>`** de las 5 páginas (formato
+  oficial de Meta), ID `29146698098325912`. Si cambias de píxel, hay que
+  reemplazar el ID en las 5 páginas.
+  Eventos: `PageView` en todas, `Lead` al enviar el formulario de la landing o el
+  de contacto del sitio, y `PremiumClick` en la CTA de la tarjeta Premium.
 - Las fotos viven en `bin/assets/images/tarjeta-*.jpg`, fuera del HTML, para que
   el navegador pueda cachearlas.
 
