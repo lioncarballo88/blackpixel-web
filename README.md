@@ -21,12 +21,14 @@ Este proyecto muestra una landing page principal, un blog estático y una págin
 - JavaScript vanilla
 - AOS para animaciones
 - Supabase para el formulario de contacto
-- Vercel para despliegue estático
+- Meta Pixel (eventos `PageView` y `Lead`)
+- Netlify para despliegue estático (`vercel.json` y `wrangler.jsonc` quedan como alternativas)
 
 ## Lo que resuelve
 
 - Hero, portafolio, servicios, testimonios y contacto en una sola landing
 - Casos de estudio por proyecto (`proyecto.html?slug=...`)
+- Landing de anuncios "Tarjeta Digital" (`tarjeta-digital.html`) con vista previa en vivo
 - Blog con listado y detalle por `slug`
 - Navegación móvil, carruseles y modales
 - Formulario de contacto con feedback visual de envío
@@ -40,10 +42,13 @@ blackpixelwebpage/
 │   ├── blog.html
 │   ├── post-detail.html
 │   ├── proyecto.html        # caso de estudio por proyecto
+│   ├── tarjeta-digital.html # landing para anuncios (noindex)
 │   ├── main.js
 │   ├── style.css
 │   ├── tailwind-fallback.css
+│   ├── robots.txt
 │   └── assets/
+│       ├── meta-pixel.js    # código base del píxel (ID en un solo lugar)
 │       └── images/
 ├── vercel.json
 ├── wrangler.jsonc
@@ -74,6 +79,23 @@ Aparece en `canonical`, `og:url`, `og:image` y `twitter:image` de las cuatro pá
 Cuando el dominio definitivo esté activo, hay que reemplazar esa base en `bin/*.html`
 y descomentar la línea `Sitemap` en `bin/robots.txt`.
 
+## Landing de anuncios (Tarjeta Digital)
+
+`bin/tarjeta-digital.html` es una landing independiente para campañas de Meta:
+
+```text
+https://blackpixelmkt.netlify.app/tarjeta-digital
+```
+
+- Lleva `noindex` para no competir con el sitio principal en Google.
+- El formulario arma el mensaje y abre WhatsApp con los datos ya escritos
+  (nombre, tipo de tarjeta, servicios y plan elegido).
+- Píxel de Meta (`assets/meta-pixel.js`, ID `29146698098325912`):
+  `PageView` en todas las páginas, `Lead` al enviar el formulario de la landing
+  o el de contacto del sitio, y `PremiumClick` en la CTA de la tarjeta Premium.
+- Las fotos viven en `bin/assets/images/tarjeta-*.jpg`, fuera del HTML, para que
+  el navegador pueda cachearlas.
+
 ## Decisiones técnicas
 
 - El sitio es estático para mantener despliegue simple y rápido.
@@ -101,7 +123,7 @@ Este repo intenta demostrar que puedo:
 
 - GitHub: [lioncarballo88](https://github.com/lioncarballo88)
 - Instagram: [lion_carballo](https://www.instagram.com/lion_carballo/)
-- WhatsApp: [9842044965](https://wa.me/9842044965)
+- WhatsApp: [274 139 0272](https://wa.me/522741390272)
 - Email: lioncarballo@gmail.com
 
 ## Licencia

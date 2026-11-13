@@ -89,6 +89,18 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// Canonical dinámico: normaliza URLs con y sin .html para evitar duplicados
+function setCanonical(url) {
+    if (!url) return;
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+    }
+    link.setAttribute('href', url);
+}
+
 // ==========================================
 // Configuración de Supabase y Formulario
 // ==========================================
@@ -896,6 +908,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (error) throw error;
 
+                // Conversión para Meta Ads: solo si el mensaje se guardó en Supabase
+                if (window.fbq) {
+                    fbq('track', 'Lead', {
+                        content_name: 'Formulario de contacto',
+                        content_category: 'Sitio web'
+                    });
+                }
+
                 form.reset();
                 submitBtn.textContent = '¡MENSAJE ENVIADO!';
                 submitBtn.classList.replace('bg-black', 'bg-green-500');
@@ -953,7 +973,8 @@ document.addEventListener("DOMContentLoaded", () => {
             document.title = post.title + ' | Black Pixel';
 
             // Metadatos por artículo (compartir en redes y buscadores)
-            const pageUrl = window.location.origin + window.location.pathname + '?slug=' + encodeURIComponent(post.slug);
+            const pageUrl = window.location.origin + window.location.pathname.replace(/post-detail\.html$/, 'post-detail') + '?slug=' + encodeURIComponent(post.slug);
+            setCanonical(pageUrl);
             const metaValues = [
                 ['meta[name="description"]', (post.excerpt || '').slice(0, 155)],
                 ['meta[property="og:title"]', post.title + ' | Black Pixel'],
@@ -1283,7 +1304,8 @@ document.addEventListener("DOMContentLoaded", () => {
             renderProjectCase(currentProject, PROJECTS);
             document.title = currentProject.name + ' | Caso de estudio — Black Pixel';
             const summaryMeta = currentProject.summary.slice(0, 155);
-            const caseUrl = window.location.origin + window.location.pathname + '?slug=' + encodeURIComponent(currentProject.slug);
+            const caseUrl = window.location.origin + window.location.pathname.replace(/proyecto\.html$/, 'proyecto') + '?slug=' + encodeURIComponent(currentProject.slug);
+            setCanonical(caseUrl);
             setMeta('meta[name="description"]', summaryMeta);
             setMeta('meta[property="og:title"]', currentProject.name + ' | Caso de estudio — Black Pixel');
             setMeta('meta[property="og:description"]', summaryMeta);
@@ -1299,6 +1321,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
         } else {
+            setCanonical(window.location.origin + '/proyecto');
             projectCaseContainer.innerHTML = `
                 <div class="mb-14">
                     <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4">Casos de <span class="text-[#22D3EE]">estudio</span></h1>
