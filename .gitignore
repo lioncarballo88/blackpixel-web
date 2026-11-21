@@ -1,5 +1,11 @@
 # Archivos y directorios a ignorar por Git
 
+# Dependencias de Node (no se versionan)
+node_modules/
+
+# Netlify
+.netlify/
+
 # Java
 *.class
 *.jar

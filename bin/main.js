@@ -1053,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", () => {
             year: '2026',
             location: 'The Woodlands, Texas',
             services: ['Diseño web', 'Identidad digital', 'Arquitectura de contenido', 'SEO local'],
-            site: 'https://zavalaashanebuilders.com',
+            site: null, // el sitio del cliente está fuera de línea
             summary: 'Zavala Ashane Builders construye casas, terrenos y proyectos multifamiliares en The Woodlands, Texas. Su trabajo se movía por referidos y redes sociales, pero no existía un lugar oficial donde un cliente potencial pudiera ver la obra, conocer el proceso y pedir una cotización sin depender de un mensaje suelto.',
             challenge: [
                 'Quien buscaba la empresa en Google no encontraba un sitio oficial, solo perfiles sociales dispersos.',
@@ -1080,10 +1080,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             ],
             results: [
-                'Dominio propio y sitio publicado (zavalaashanebuilders.com).',
+                'Dominio propio definido para el proyecto.',
                 'Secciones de proyectos, propiedades en venta, servicios, proceso y testimonios.',
                 'Filtros de portafolio por tipo de proyecto y ficha por propiedad con estado (en venta, en contrato, vendida).',
-                'Formulario de contacto en producción con respaldo por WhatsApp.',
+                'Formulario de contacto con respaldo por WhatsApp.',
                 'Medición de tráfico y leads pendiente: es el siguiente paso con Search Console y analítica.'
             ],
             stack: ['HTML5', 'CSS3', 'JavaScript vanilla', 'Deploy estático']
@@ -1096,7 +1096,7 @@ document.addEventListener("DOMContentLoaded", () => {
             year: '2026',
             location: 'Producto propio',
             services: ['Diseño de producto', 'Interfaz móvil', 'Integración de IA'],
-            site: 'https://polite-pasca-922737.netlify.app/',
+            site: null, // el sitio del prototipo está fuera de línea
             summary: 'Repro AI nació como un experimento de producto: tomar la lógica de un asistente conversacional y aplicarla a una app móvil ligera, sin la fricción de un panel con veinte opciones.',
             challenge: [
                 'Las apps de asistencia suelen castigar al usuario con menús y formularios antes de dar una respuesta.',
@@ -1118,7 +1118,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             ],
             results: [
-                'Prototipo funcional publicado y navegable en móvil.',
+                'Prototipo funcional navegable en móvil.',
                 'Flujo de conversación completo, desde el saludo hasta la respuesta.',
                 'Base reutilizable para futuros asistentes verticales de otros clientes.'
             ],
@@ -1132,7 +1132,7 @@ document.addEventListener("DOMContentLoaded", () => {
             year: '2026',
             location: 'Servicios legales',
             services: ['Identidad digital', 'Diseño web', 'Contenido'],
-            site: 'https://interpretelegaldocu.netlify.app/',
+            site: null, // el sitio del cliente está fuera de línea
             summary: 'Un servicio de interpretación legal necesita proyectar exactitud. El proyecto arrancó con una página de presentación que ordena los servicios y transmite autoridad sin caer en el cliché del despacho jurídico.',
             challenge: [
                 'El sector legal abusa del azul marino, la balanza y la serif genérica: nada memorable.',
@@ -1154,7 +1154,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             ],
             results: [
-                'Sitio publicado con identidad visual definida.',
+                'Sitio entregado con identidad visual definida.',
                 'Servicios y proceso explicados sin jerga.',
                 'Base de marca lista para extenderse a tarjetas y documentación.'
             ],
@@ -1181,17 +1181,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const renderProjectCase = (project, projects) => {
             const index = projects.indexOf(project);
             const next = projects[(index + 1) % projects.length];
-            const host = (() => {
+            const host = project.site ? (() => {
                 try { return new URL(project.site).hostname.replace(/^www\./, ''); }
                 catch (e) { return project.site; }
-            })();
+            })() : null;
 
             const metaRows = [
                 ['Cliente', project.name],
                 ['Año', project.year],
-                ['Ubicación', project.location],
-                ['Sitio', host]
-            ].concat([['Servicios', project.services.join(' · ')]]);
+                ['Ubicación', project.location]
+            ].concat(project.site ? [['Sitio', host]] : []).concat([['Servicios', project.services.join(' · ')]]);
 
             projectCaseContainer.innerHTML = `
                 <header class="mb-12 fade-in-up">
@@ -1205,9 +1204,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${project.tagline}
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
+                        ${project.site ? `
                         <a href="${project.site}" target="_blank" rel="noopener noreferrer" class="bg-cyan-400 text-black px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] hover:bg-white transition-colors duration-500 text-center">
                             Visitar el sitio &nearr;
                         </a>
+                        ` : ''}
                         <a href="index.html#contacto" class="border border-zinc-700 bg-black text-white px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] hover:border-cyan-500 hover:text-cyan-400 transition-colors duration-500 text-center">
                             Quiero algo así
                         </a>
@@ -1219,13 +1220,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
                         <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
                         <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
-                        <span class="ml-3 text-[10px] uppercase tracking-widest text-gray-500 truncate">${host}</span>
+                        <span class="ml-3 text-[10px] uppercase tracking-widest text-gray-500 truncate">${host || 'Caso de estudio'}</span>
                     </div>
                     <div class="relative aspect-[16/10]">
-                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-zinc-900 via-black to-zinc-800">
-                            <span class="px-6 text-center text-2xl md:text-4xl font-black uppercase tracking-tighter text-white/10">${project.name}</span>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-zinc-900 via-black to-zinc-800 px-8 text-center">
+                            <span class="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-400">Caso de estudio</span>
+                            <span class="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white">${project.name}</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500">${project.category}</span>
                         </div>
-                        <iframe src="${project.site}" title="Vista previa del sitio de ${project.name}" sandbox="allow-scripts allow-same-origin allow-popups" class="absolute inset-0 w-full h-full border-0 pointer-events-none" loading="lazy"></iframe>
+                        ${project.site ? `<iframe src="${project.site}" title="Vista previa del sitio de ${project.name}" sandbox="allow-scripts allow-same-origin allow-popups" class="absolute inset-0 w-full h-full border-0 pointer-events-none" loading="lazy"></iframe>` : ''}
                     </div>
                 </div>
 

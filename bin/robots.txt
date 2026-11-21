@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# TODO: añadir la línea Sitemap cuando el dominio definitivo esté publicado:
-# Sitemap: https://bpmkkt.netlify.app/sitemap.xml
+Sitemap: https://blackpixel-web.netlify.app/sitemap.xml

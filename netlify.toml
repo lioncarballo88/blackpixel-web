@@ -3,5 +3,8 @@
 [build]
   publish = "bin"
 
+# El formulario de contacto usa Netlify Forms (ver bin/index.html).
+# Tras el primer deploy, activa el aviso por correo en Site settings > Forms.
+
 # URLs limpias: /blog en lugar de /blog.html
 # (main.js detecta las páginas por elementos del DOM, no por el nombre del archivo)

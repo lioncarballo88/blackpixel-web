@@ -1,0 +1,13 @@
+{
+  "name": "blackpixel-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web estático de Black Pixel",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i input.css -o bin/tailwind.css --minify",
+    "serve": "npx --yes serve bin"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

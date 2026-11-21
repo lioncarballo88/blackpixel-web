@@ -2,7 +2,7 @@
 
 Sitio web estático tipo portafolio/agencia para practicar maquetación, UI responsiva y manejo de datos desde frontend.
 
-**Demo:** [bpmkkt.netlify.app](https://bpmkkt.netlify.app/)
+**Demo:** [blackpixel-web.netlify.app](https://blackpixel-web.netlify.app/)
 
 ## Resumen
 
@@ -11,7 +11,7 @@ Este proyecto muestra una landing page principal, un blog estático y una págin
 - criterio visual
 - estructura del proyecto
 - manejo de componentes reutilizables
-- formularios con Supabase desde frontend
+- formularios con Netlify Forms y respaldo por WhatsApp
 - accesibilidad básica y diseño responsive
 
 ## Stack
@@ -20,9 +20,9 @@ Este proyecto muestra una landing page principal, un blog estático y una págin
 - Tailwind CSS compilado (3.4, sin CDN)
 - JavaScript vanilla
 - AOS para animaciones
-- Netlify Forms para el formulario de contacto (sin SDK ni claves en el cliente)
+- Formulario de contacto con Netlify Forms (solo funciona desplegado en Netlify) y respaldo por WhatsApp
 - Meta Pixel (eventos `PageView` y `Lead`)
-- Netlify para despliegue estático (`vercel.json` y `wrangler.jsonc` quedan como alternativas)
+- Netlify para el despliegue estático (`vercel.json` y `wrangler.jsonc` quedan como alternativas)
 
 ## Lo que resuelve
 
@@ -48,8 +48,10 @@ blackpixelwebpage/
 │   ├── tailwind.css         # generado: no editar a mano
 │   ├── tailwind-fallback.css
 │   ├── robots.txt
+│   ├── sitemap.xml
 │   └── assets/
 │       └── images/
+├── package.json             # scripts de build y servidor local
 ├── tailwind.config.js       # qué archivos escanea Tailwind
 ├── input.css                # directivas base de Tailwind
 ├── vercel.json
@@ -60,14 +62,20 @@ blackpixelwebpage/
 
 ## Cómo correrlo
 
-1. Entra a la carpeta `bin/`.
-2. Levanta un servidor local:
+1. Instala dependencias (solo la primera vez): `npm install`
+2. Levanta un servidor local apuntando a `bin/`:
+
+```bash
+npm run serve
+```
+
+3. Abre `http://localhost:3000` (o el puerto que indique `serve`).
+
+Alternativa sin Node, desde la carpeta `bin/`:
 
 ```bash
 python -m http.server 8000
 ```
-
-3. Abre `http://localhost:8000`.
 
 ## Tailwind CSS
 
@@ -76,8 +84,8 @@ El sitio usa un CSS compilado (`bin/tailwind.css`, ~28 KB), no el CDN.
 Si agregas clases nuevas en el HTML o en `main.js`, hay que regenerarlo:
 
 ```bash
-npm install --no-save tailwindcss@3.4.17
-npx tailwindcss -c tailwind.config.js -i input.css -o bin/tailwind.css --minify
+npm install
+npm run build:css
 ```
 
 `tailwind.config.js` escanea `index.html`, `blog.html`, `post-detail.html`,
@@ -86,24 +94,40 @@ añádela ahí o sus clases no se generarán.
 
 `tarjeta-digital.html` no usa Tailwind: tiene su propio CSS embebido.
 
+## Despliegue
+
+El sitio se publica en Netlify con `netlify.toml` (`publish = "bin"`). Cada push a
+`master` redepliega. El sitio debe llamarse `blackpixel-web` para que coincida con
+la URL base de `canonical`, `sitemap.xml` y `robots.txt`; si Netlify asigna otro
+nombre, reemplaza `https://blackpixel-web.netlify.app` en `bin/*.html`,
+`bin/sitemap.xml` y `bin/robots.txt`.
+
+El formulario de contacto usa Netlify Forms: el deploy detecta el form `contacto`
+de `bin/index.html` y los envíos quedan en **Site settings → Forms**. Para recibir
+aviso por correo, activa una notificación en ese panel después del primer envío.
+En Vercel, Cloudflare o local el POST de Netlify Forms no existe y el formulario
+ofrece el respaldo por WhatsApp con los datos ya escritos.
+
+`vercel.json` y `wrangler.jsonc` quedan como alternativas de despliegue.
+
 ## Dominio y SEO
 
 Mientras el dominio propio no esté publicado, el sitio usa como base:
 
 ```text
-https://bpmkkt.netlify.app
+https://blackpixel-web.netlify.app
 ```
 
-Aparece en `canonical`, `og:url`, `og:image` y `twitter:image` de las cuatro páginas HTML.
-Cuando el dominio definitivo esté activo, hay que reemplazar esa base en `bin/*.html`
-y descomentar la línea `Sitemap` en `bin/robots.txt`.
+Aparece en `canonical`, `og:url`, `og:image` y `twitter:image` de las páginas HTML,
+en `bin/sitemap.xml` y en `bin/robots.txt`. Cuando el dominio definitivo esté activo,
+hay que reemplazar esa base en `bin/*.html`, `bin/sitemap.xml` y `bin/robots.txt`.
 
 ## Landing de anuncios (Tarjeta Digital)
 
 `bin/tarjeta-digital.html` es una landing independiente para campañas de Meta:
 
 ```text
-https://bpmkkt.netlify.app/tarjeta-digital
+https://blackpixel-web.netlify.app/tarjeta-digital
 ```
 
 - Lleva `noindex` para no competir con el sitio principal en Google.
@@ -124,14 +148,16 @@ https://bpmkkt.netlify.app/tarjeta-digital
 - El blog se renderiza desde datos internos del frontend para evitar backend extra.
 - El formulario usa Netlify Forms: los envíos quedan en el panel de Netlify
   (Forms) y se pueden notificar por correo. No hay claves ni SDK en el cliente.
-  Solo funciona desplegado en Netlify; en local el POST devuelve 501 y el sitio
-  ofrece el respaldo por WhatsApp.
+  Solo funciona desplegado en Netlify; en Vercel, Cloudflare o local el POST
+  devuelve error y el sitio ofrece el respaldo por WhatsApp.
 
 ## Mejoras pendientes
 
 - Separar `main.js` por responsabilidades.
 - Mover contenido del blog a una sola fuente de verdad.
 - Reemplazar assets faltantes por imágenes finales propias.
+- Sustituir los enlaces externos de los proyectos por capturas locales (Zavala Ashane e Intérprete Legal dan 404; Repro AI da 429).
+- Sacar `node_modules/` del repositorio con `git rm -r --cached node_modules` (ya está en `.gitignore`).
 - Extraer navbar y footer a parciales si el sitio sigue creciendo.
 
 ## Para reclutadores
