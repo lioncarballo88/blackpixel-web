@@ -711,7 +711,7 @@ document.addEventListener("DOMContentLoaded", () => {
             excerpt: 'Herramientas y estrategias para automatizar tus ventas, emails y redes sociales sin perder el toque personal.',
             author: 'Noé Sánchez Carballo',
             published_at: '2026-03-23T10:00:00Z',
-            image_url: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800&q=80',
+            image_url: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=80',
             content: `
                 <h2>Sistemas que Trabajan por Ti</h2>
                 <p>La automatización de marketing no es ciencia ficción. Es la realidad de los negocios exitosos. Imagina tener un equipo de ventas que trabaja 24/7 sin cansarse nunca.</p>

@@ -2,7 +2,7 @@
 
 Sitio web estático tipo portafolio/agencia para practicar maquetación, UI responsiva y manejo de datos desde frontend.
 
-**Demo:** [blackpixel-web.netlify.app](https://blackpixel-web.netlify.app/)
+**Demo:** [bpmkt.netlify.app](https://bpmkt.netlify.app/)
 
 ## Resumen
 
@@ -97,16 +97,19 @@ añádela ahí o sus clases no se generarán.
 ## Despliegue
 
 El sitio se publica en Netlify con `netlify.toml` (`publish = "bin"`). Cada push a
-`master` redepliega. El sitio debe llamarse `blackpixel-web` para que coincida con
-la URL base de `canonical`, `sitemap.xml` y `robots.txt`; si Netlify asigna otro
-nombre, reemplaza `https://blackpixel-web.netlify.app` en `bin/*.html`,
-`bin/sitemap.xml` y `bin/robots.txt`.
+`master` redepliega. El sitio se llama `bpmkt` y su URL base es
+`https://bpmkt.netlify.app`; si cambia de nombre, reemplaza esa base en
+`bin/*.html`, `bin/sitemap.xml` y `bin/robots.txt`.
+
+El proyecto debe estar en **Project visibility: Public**
+(**Project configuration → General → Visitor access**). Los proyectos nuevos de
+Netlify nacen privados y responden `401` hasta que se hacen públicos.
 
 El formulario de contacto usa Netlify Forms: el deploy detecta el form `contacto`
-de `bin/index.html` y los envíos quedan en **Site settings → Forms**. Para recibir
-aviso por correo, activa una notificación en ese panel después del primer envío.
-En Vercel, Cloudflare o local el POST de Netlify Forms no existe y el formulario
-ofrece el respaldo por WhatsApp con los datos ya escritos.
+de `bin/index.html` y los envíos quedan en **Project configuration → Forms**. Para
+recibir aviso por correo, activa una notificación en ese panel después del primer
+envío. En Vercel, Cloudflare o local el POST de Netlify Forms no existe y el
+formulario ofrece el respaldo por WhatsApp con los datos ya escritos.
 
 `vercel.json` y `wrangler.jsonc` quedan como alternativas de despliegue.
 
@@ -115,7 +118,7 @@ ofrece el respaldo por WhatsApp con los datos ya escritos.
 Mientras el dominio propio no esté publicado, el sitio usa como base:
 
 ```text
-https://blackpixel-web.netlify.app
+https://bpmkt.netlify.app
 ```
 
 Aparece en `canonical`, `og:url`, `og:image` y `twitter:image` de las páginas HTML,
@@ -127,7 +130,7 @@ hay que reemplazar esa base en `bin/*.html`, `bin/sitemap.xml` y `bin/robots.txt
 `bin/tarjeta-digital.html` es una landing independiente para campañas de Meta:
 
 ```text
-https://blackpixel-web.netlify.app/tarjeta-digital
+https://bpmkt.netlify.app/tarjeta-digital
 ```
 
 - Lleva `noindex` para no competir con el sitio principal en Google.
